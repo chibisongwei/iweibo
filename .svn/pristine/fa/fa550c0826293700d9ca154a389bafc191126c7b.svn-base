@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_status"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_white2gray_selector"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_status_avatar"></include>
+
+    <TextView
+        android:id="@+id/tv_status_content"
+        style="@style/tv_body_style"
+        android:layout_width="match_parent"
+        android:layout_marginTop="-16dp"
+        android:padding="16dp" />
+
+    <include
+        android:id="@+id/layout_status_image"
+        layout="@layout/include_status_image"
+        android:visibility="gone"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp">
+
+        <include
+            android:id="@+id/layout_status_retweet"
+            layout="@layout/include_retweet_status_card"
+            android:visibility="gone"></include>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/layout_status_action"
+        layout="@layout/include_status_action"></include>
+
+</LinearLayout>

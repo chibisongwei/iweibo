@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_dir"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/dir_item_image"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/iv_filter"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_alignRight="@id/dir_item_image"
+                android:layout_alignTop="@id/dir_item_image"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="4dp"
+                android:src="@mipmap/compose_photo_filter_checkbox_checked"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/dir_item_name"
+            style="@style/tv_subhead_style"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:id="@+id/dir_item_count"
+            style="@style/tv_caption_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_black" />
+    </LinearLayout>
+
+</LinearLayout>

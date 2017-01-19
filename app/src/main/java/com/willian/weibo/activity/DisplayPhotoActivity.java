@@ -1,0 +1,68 @@
+package com.willian.weibo.activity;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import com.willian.weibo.R;
+import com.willian.weibo.utils.LoggerUtil;
+import com.willian.weibo.utils.TitleBarBuilder;
+
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ * 对相机拍摄的照片进行展示
+ */
+public class DisplayPhotoActivity extends BaseActivity {
+
+    public final static String TAG = "DisplayPhotoActivity";
+
+    private ImageView mImageView;
+
+    private Button mNextButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_display_photo);
+        // 要展示的图片URL
+        String photoPath = getIntent().getStringExtra("photoPath");
+        // 用户已选择的照片
+        final List<String> newPhotos = (List) getIntent().getSerializableExtra("newPhotos");
+        LoggerUtil.showLog(TAG, "======newPhotos========" + newPhotos, 6);
+
+        new TitleBarBuilder(this)
+                .setLeftImage(R.drawable.titlebar_back_selector)
+                .setRightButton(getResources().getString(R.string.next_step))
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                })
+                .setRightOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent mIntent = new Intent(DisplayPhotoActivity.this, WriteStatusActivity.class);
+                        // 将WriteStatusActivity以上的其他Activity全部出栈
+                        mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        mIntent.putExtra("newPhotos", (Serializable) newPhotos);
+                        startActivity(mIntent);
+                        finish();
+                    }
+                });
+        mNextButton = (Button) findViewById(R.id.btn_right);
+        mNextButton.setEnabled(true);
+        mNextButton.setBackgroundResource(R.drawable.common_button_orange);
+        mImageView = (ImageView) findViewById(R.id.iv_display_photo);
+        // 显示图片
+        int index = photoPath.indexOf("/storage");
+        Bitmap bitmap = BitmapFactory.decodeFile(photoPath.substring(index));
+        mImageView.setImageBitmap(bitmap);
+    }
+}

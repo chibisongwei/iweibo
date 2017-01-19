@@ -1,0 +1,41 @@
+package com.willian.weibo.utils;
+
+import android.app.Application;
+import android.content.Context;
+
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.sina.weibo.sdk.openapi.models.User;
+
+/**
+ * Created by willian on 2016/3/26.
+ */
+public class BaseApplication extends Application {
+
+    public User currentUser;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        initImageLoader(this);
+    }
+
+    /**
+     * 初始化图片处理
+     *
+     * @param context
+     */
+    private void initImageLoader(Context context) {
+
+        ImageLoaderConfiguration mConfig = new ImageLoaderConfiguration.Builder(context)
+                .threadPriority(Thread.NORM_PRIORITY - 2)
+                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
+                .tasksProcessingOrder(QueueProcessingType.FIFO)
+                .defaultDisplayImageOptions(ImageOptionHelper.getImageOptions())
+                .build();
+        ImageLoader.getInstance().init(mConfig);
+    }
+}

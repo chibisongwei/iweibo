@@ -1,0 +1,237 @@
+package com.willian.weibo.widget;
+
+import android.content.Context;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+
+import com.willian.weibo.R;
+import com.willian.weibo.utils.VoiceManager;
+import com.willian.weibo.utils.DialogManager;
+
+/**
+ * 录音按钮
+ */
+public class VoiceButton extends Button {
+    // 录音所需的最短时长
+    private static final float AUDIO_MIN_TIME = 0.6f;
+    // 录音允许的最大时长
+    private static final float AUDIO_MAX_TIME = 60f;
+    // 正常状态
+    private static final int STATE_NORMAL = 1;
+    // 录音状态
+    private static final int STATE_RECORDING = 2;
+    // 取消状态
+    private static final int STATE_CANCEL = 3;
+    // 手指纵向允许滑动的最大距离
+    private static final int DISTANCE = 50;
+
+    private static final int AUDIO_PREPARED = 0X110;
+    private static final int VOICE_CHANGED = 0X111;
+    private static final int DIALOG_DIMISS = 0X112;
+    // 录音时长
+    private float mAudioTime;
+
+    // 当前状态
+    private int mCurState = 1;
+    // 是否正在录音
+    private boolean isRecording;
+    // 是否触发LongClick事件
+    private boolean isTriggerLong;
+
+    private DialogManager mDialogManager;
+
+    private VoiceManager mAudioRecordManager;
+
+    private AudioFinishedListener mFinishedListener;
+
+    /**
+     * 录音完成后的回调接口
+     */
+    public interface AudioFinishedListener {
+        void onFinish(float audioTime, String filePath);
+    }
+
+    public void setOnAudioFinishedListener(AudioFinishedListener listener) {
+        this.mFinishedListener = listener;
+    }
+
+    public VoiceButton(Context context) {
+        super(context, null);
+    }
+
+    public VoiceButton(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mDialogManager = new DialogManager(context);
+        // 录音存放的文件夹路径
+        String dirPath = Environment.getExternalStorageDirectory() + "/weibo_audio";
+        mAudioRecordManager = VoiceManager.getInstance(dirPath);
+        mAudioRecordManager.setOnAudioPreparedListener(new VoiceManager.AudioPreparedListener() {
+            @Override
+            public void onPrepared() {
+                mHandler.sendEmptyMessage(AUDIO_PREPARED);
+            }
+        });
+
+        setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                isTriggerLong = true;
+                mAudioRecordManager.prepareAudio();
+                return false;
+            }
+        });
+    }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case AUDIO_PREPARED:
+                    mDialogManager.initDialog();
+                    mDialogManager.showRecordingDialog();
+                    isRecording = true;
+                    // 获取录音时间
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while (isRecording) {
+                                try {
+                                    Thread.sleep(100);
+                                    mAudioTime += 0.1f;
+                                    // 音量变化
+                                    mHandler.sendEmptyMessage(VOICE_CHANGED);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }).start();
+                    break;
+                case VOICE_CHANGED:
+                    // 录音时间不能超过1分钟
+                    if ((int) mAudioTime > AUDIO_MAX_TIME) {
+                        mAudioRecordManager.releaseAudio();
+                        mDialogManager.dimissDialog();
+                    } else {
+                        mDialogManager.showVoiceUpdateDialog(mAudioRecordManager.getVoiceLevel(7), mAudioTime);
+                    }
+                    break;
+                case DIALOG_DIMISS:
+
+                    mDialogManager.dimissDialog();
+                    break;
+                default:
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                changeButtonState(STATE_RECORDING);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (isRecording) {
+                    if (isCancelRecording(x, y)) {
+                        changeButtonState(STATE_CANCEL);
+                    } else {
+                        changeButtonState(STATE_RECORDING);
+                    }
+                }
+
+                break;
+            case MotionEvent.ACTION_UP:
+                if (!isTriggerLong) {// 还没触发LongClick事件
+                    reset();
+                    return super.onTouchEvent(event);
+                } else if (!isRecording || mAudioTime < AUDIO_MIN_TIME) { // 还没开始录音或录音时间太短
+                    isRecording = false;
+                    mDialogManager.showShortDialog();
+                    mAudioRecordManager.cancelAudio();
+                    mHandler.sendEmptyMessageDelayed(DIALOG_DIMISS, 1500);
+                } else if (mCurState == STATE_RECORDING) { // 正常结束录音
+                    mDialogManager.dimissDialog();
+
+                    if (mFinishedListener != null) {
+                        mFinishedListener.onFinish(mAudioTime, mAudioRecordManager.getAudioFilePath());
+                    }
+                    mAudioRecordManager.releaseAudio();
+
+
+                } else if (mCurState == STATE_CANCEL) { // 取消录音
+                    mDialogManager.dimissDialog();
+                    mAudioRecordManager.cancelAudio();
+                }
+
+                reset();
+                break;
+        }
+
+        return super.onTouchEvent(event);
+    }
+
+    /**
+     * 改变按钮的状态
+     */
+    private void changeButtonState(int state) {
+        if (mCurState != state) {
+            mCurState = state;
+            switch (state) {
+                case STATE_NORMAL:
+                    setText(getResources().getString(R.string.down_talk));
+                    setTextColor(getResources().getColor(R.color.text_orange));
+                    setBackgroundResource(R.drawable.messages_privatechat_textview_background);
+                    break;
+                case STATE_RECORDING:
+                    setText(getResources().getString(R.string.up_send));
+                    setTextColor(getResources().getColor(R.color.white));
+                    setBackgroundResource(R.drawable.message_send_background);
+                    if (isRecording) {
+                        mDialogManager.showVoiceUpdateDialog(mAudioRecordManager.getVoiceLevel(7), mAudioTime);
+                    } else {
+                        mDialogManager.initDialog();
+                        mDialogManager.showRecordingDialog();
+                    }
+                    break;
+                case STATE_CANCEL:
+                    setText(getResources().getString(R.string.up_send));
+                    setTextColor(getResources().getColor(R.color.text_orange));
+                    setBackgroundResource(R.drawable.messages_privatechat_textview_background);
+                    mDialogManager.showCancelDialog();
+                    break;
+            }
+        }
+    }
+
+    /**
+     * 根据手指滑动的区域范围判断是否取消录音
+     *
+     * @return
+     */
+    private boolean isCancelRecording(int x, int y) {
+        // 如果手指位置在Button以上或以下区域，则取消录音
+        if (y < -DISTANCE || y > getHeight() + DISTANCE) {
+            return true;
+        }
+        return false;
+    }
+
+    private void reset() {
+        isTriggerLong = false;
+        isRecording = false;
+        mAudioTime = 0.0f;
+        changeButtonState(STATE_NORMAL);
+    }
+}

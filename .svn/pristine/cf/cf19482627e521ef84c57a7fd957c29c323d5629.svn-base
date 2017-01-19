@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/rg_status_detail_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_retweet"
+            style="@style/rb_detail_tab_style"
+            android:checked="false" />
+
+        <RadioButton
+            android:id="@+id/rb_comment"
+            style="@style/rb_detail_tab_style"
+            android:checked="true" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/rb_attitude"
+            style="@style/rb_detail_tab_style"
+            android:checked="false" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_color"></View>
+
+</LinearLayout>

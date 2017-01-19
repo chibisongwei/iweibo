@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Weibo</string>
+
+    <string name="auth_login">授权登录</string>
+    <string name="weibosdk_demo_toast_auth_success">授权成功</string>
+    <string name="weibosdk_demo_toast_auth_failed">授权失败</string>
+    <string name="weibosdk_demo_toast_auth_canceled">取消授权</string>
+
+    <string name="tab_home">首页</string>
+    <string name="tab_message">消息</string>
+    <string name="tab_search">搜索</string>
+    <string name="tab_user">我</string>
+
+    <string name="weibo_from">来自</string>
+    <string name="retweet">转发</string>
+    <string name="comment">评论</string>
+    <string name="attitude">赞</string>
+
+    <string name="load_more">加载更多</string>
+
+    <string name="weibo_detail">微博正文</string>
+    <string name="cancel">取消</string>
+    <string name="send_comment">发评论</string>
+    <string name="send">发送</string>
+    <string name="comment_not_null">评论不能为空</string>
+    <string name="hint_text">分享新鲜事...</string>
+    <string name="hint_text_comment">写评论...</string>
+</resources>

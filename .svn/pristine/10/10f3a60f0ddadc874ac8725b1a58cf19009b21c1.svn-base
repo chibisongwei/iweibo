@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ProgressBar
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+
+    <TextView
+        style="@style/tv_subhead_style"
+        android:layout_height="56dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:text="@string/load_more"
+        android:textColor="@color/text_gray" />
+
+</LinearLayout>

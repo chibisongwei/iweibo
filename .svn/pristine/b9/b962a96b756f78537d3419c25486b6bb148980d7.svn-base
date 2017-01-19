@@ -1,0 +1,83 @@
+package com.willian.weibo.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.willian.weibo.R;
+import com.willian.weibo.bean.Message;
+
+import java.util.List;
+
+/**
+ * Created by willian on 2016/3/17.
+ */
+public class ChatAdapter extends BaseAdapter {
+
+    private Context mContext;
+    private List<Message> mList;
+    private LayoutInflater mInflater;
+
+    public ChatAdapter(Context mContext, List<Message> mList) {
+        this.mList = mList;
+        this.mContext = mContext;
+        mInflater = LayoutInflater.from(mContext);
+    }
+
+    @Override
+    public int getCount() {
+        return mList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder = null;
+        if(convertView == null){
+            convertView = mInflater.inflate(R.layout.msg_item, null);
+            viewHolder = new ViewHolder();
+            viewHolder.leftLayout = (LinearLayout) convertView.findViewById(R.id.left_layout);
+            viewHolder.rightLayout = (LinearLayout) convertView.findViewById(R.id.right_layout);
+            viewHolder.leftMsg = (TextView) convertView.findViewById(R.id.left_msg);
+            viewHolder.rightMsg = (TextView) convertView.findViewById(R.id.right_msg);
+            // 第二次绘制ListView时，直接从getTag()中取出
+            convertView.setTag(viewHolder);
+        }else{
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        Message msg = mList.get(position);
+        // 收到消息
+        if(msg.getMsgType() == 0){
+            viewHolder.leftLayout.setVisibility(View.VISIBLE);
+            viewHolder.rightLayout.setVisibility(View.GONE);
+            viewHolder.leftMsg.setText(msg.getMsgContent());
+        } else if(msg.getMsgType() == 1){
+            viewHolder.rightLayout.setVisibility(View.VISIBLE);
+            viewHolder.leftLayout.setVisibility(View.GONE);
+            viewHolder.rightMsg.setText(msg.getMsgContent());
+        }
+
+        return convertView;
+    }
+
+    class ViewHolder{
+        LinearLayout leftLayout;
+        LinearLayout rightLayout;
+        TextView leftMsg;
+        TextView rightMsg;
+    }
+}

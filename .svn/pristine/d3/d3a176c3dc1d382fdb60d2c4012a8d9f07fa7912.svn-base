@@ -1,0 +1,139 @@
+package com.willian.weibo.utils;
+
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.willian.weibo.R;
+
+/**
+ * TitleBar工具类
+ */
+public class TitleBarBuilder {
+
+    private View mView;
+    // 左边Icon
+    private ImageView mLeftImage;
+    // 左边Text
+    private TextView mLeftText;
+    // 左边Button
+    private Button mLeftButton;
+    // 中间标题
+    private TextView mTitleText;
+    // 中间Icon
+    private ImageView mArrowImage;
+    // 右边Icon
+    private ImageView mRightImage;
+    // 右边Text
+    private TextView mRightText;
+    // 右边Button
+    private Button mRightButton;
+
+    public TitleBarBuilder(View view) {
+        mView = view.findViewById(R.id.layout_title_bar);
+
+        mLeftImage = (ImageView) mView.findViewById(R.id.iv_left);
+        mLeftText = (TextView) mView.findViewById(R.id.tv_left);
+        mLeftButton = (Button) mView.findViewById(R.id.btn_left);
+
+        mTitleText = (TextView) mView.findViewById(R.id.tv_title);
+        mArrowImage = (ImageView) mView.findViewById(R.id.iv_arrow);
+
+        mRightImage = (ImageView) mView.findViewById(R.id.iv_right);
+        mRightText = (TextView) mView.findViewById(R.id.tv_right);
+        mRightButton = (Button) mView.findViewById(R.id.btn_right);
+    }
+
+    public TitleBarBuilder(Activity activity) {
+        mView = activity.findViewById(R.id.layout_title_bar);
+
+        mLeftImage = (ImageView) mView.findViewById(R.id.iv_left);
+        mLeftText = (TextView) mView.findViewById(R.id.tv_left);
+        mLeftButton = (Button) mView.findViewById(R.id.btn_left);
+
+        mTitleText = (TextView) mView.findViewById(R.id.tv_title);
+        mArrowImage = (ImageView) mView.findViewById(R.id.iv_arrow);
+
+        mRightImage = (ImageView) mView.findViewById(R.id.iv_right);
+        mRightText = (TextView) mView.findViewById(R.id.tv_right);
+        mRightButton = (Button) mView.findViewById(R.id.btn_right);
+    }
+
+    public TitleBarBuilder setTitleText(String text) {
+        mTitleText.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        mTitleText.setText(text);
+        return this;
+    }
+
+    public TitleBarBuilder setArrowImage(int resId) {
+        mArrowImage.setVisibility(resId > 0 ? View.VISIBLE : View.GONE);
+        mArrowImage.setImageResource(resId);
+        return this;
+    }
+
+    public TitleBarBuilder setLeftImage(int resId) {
+        mLeftImage.setVisibility(resId > 0 ? View.VISIBLE : View.GONE);
+        mLeftImage.setImageResource(resId);
+        return this;
+    }
+
+    public TitleBarBuilder setLeftText(String text) {
+        mLeftText.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        mLeftText.setText(text);
+        return this;
+    }
+
+    public TitleBarBuilder setLeftButton(String text) {
+        mLeftButton.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        mLeftButton.setText(text);
+        return this;
+    }
+
+    public TitleBarBuilder setLeftOnClickListener(View.OnClickListener listener) {
+        if (mLeftImage.getVisibility() == View.VISIBLE) {
+            mLeftImage.setOnClickListener(listener);
+        } else if (mLeftText.getVisibility() == View.VISIBLE) {
+            mLeftText.setOnClickListener(listener);
+        } else if (mLeftButton.getVisibility() == View.VISIBLE) {
+            mLeftButton.setOnClickListener(listener);
+        }
+        return this;
+    }
+
+    public TitleBarBuilder setRightImage(int resId) {
+        mRightImage.setVisibility(resId > 0 ? View.VISIBLE : View.GONE);
+        mRightImage.setImageResource(resId);
+        return this;
+    }
+
+    public TitleBarBuilder setRightText(String text) {
+        mRightText.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        mRightText.setText(text);
+        return this;
+    }
+
+    public TitleBarBuilder setRightButton(String text) {
+        mRightButton.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        mRightButton.setText(text);
+        return this;
+    }
+
+    public TitleBarBuilder setRightOnClickListener(View.OnClickListener listener) {
+        if (mRightImage.getVisibility() == View.VISIBLE) {
+            mRightImage.setOnClickListener(listener);
+        } else if (mRightText.getVisibility() == View.VISIBLE) {
+            mRightText.setOnClickListener(listener);
+        } else if (mRightButton.getVisibility() == View.VISIBLE) {
+            mRightButton.setOnClickListener(listener);
+        }
+        return this;
+    }
+
+    public View build() {
+        return mView;
+    }
+
+}

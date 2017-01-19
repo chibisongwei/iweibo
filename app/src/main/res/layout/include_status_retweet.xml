@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/retweet_bg_selector"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_retweet_content"
+        style="@style/tv_body_style"
+        android:padding="16dp"
+        android:textColor="@color/text_gray" />
+
+    <include
+        android:id="@+id/layout_retweet_image"
+        layout="@layout/include_status_image"
+        android:visibility="gone"></include>
+
+</LinearLayout>

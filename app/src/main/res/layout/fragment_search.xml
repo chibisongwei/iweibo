@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_title_bar"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingTop="8dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_ads"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:gravity="center"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:id="@+id/iv_res1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="matrix"
+                        android:src="@mipmap/page_highlighted" />
+
+                    <ImageView
+                        android:id="@+id/iv_res2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:scaleType="matrix"
+                        android:src="@mipmap/page" />
+
+                    <ImageView
+                        android:id="@+id/iv_res3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:scaleType="matrix"
+                        android:src="@mipmap/page" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <com.willian.weibo.widget.WrapHeightListView
+                android:id="@+id/lv_search_items"
+                style="@style/lv_item_style"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingBottom="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

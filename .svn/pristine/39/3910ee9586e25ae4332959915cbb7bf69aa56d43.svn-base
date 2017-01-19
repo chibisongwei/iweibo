@@ -1,0 +1,47 @@
+package com.willian.weibo.bean;
+
+/**
+ * Created by willian on 2016/6/25.
+ */
+public class Chat {
+
+    private int chatType;
+
+    private String chatTime;
+
+    private String inputContent;
+
+    private Recorder recorder;
+
+    public int getChatType() {
+        return chatType;
+    }
+
+    public void setChatType(int chatType) {
+        this.chatType = chatType;
+    }
+
+    public String getChatTime() {
+        return chatTime;
+    }
+
+    public void setChatTime(String chatTime) {
+        this.chatTime = chatTime;
+    }
+
+    public String getInputContent() {
+        return inputContent;
+    }
+
+    public void setInputContent(String inputContent) {
+        this.inputContent = inputContent;
+    }
+
+    public Recorder getRecorder() {
+        return recorder;
+    }
+
+    public void setRecorder(Recorder recorder) {
+        this.recorder = recorder;
+    }
+}

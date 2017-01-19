@@ -1,0 +1,289 @@
+package com.willian.weibo.activity;
+
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.sina.weibo.sdk.exception.WeiboException;
+import com.sina.weibo.sdk.net.RequestListener;
+import com.sina.weibo.sdk.openapi.legacy.StatusesAPI;
+import com.sina.weibo.sdk.openapi.models.ErrorInfo;
+import com.sina.weibo.sdk.openapi.models.Status;
+import com.sina.weibo.sdk.openapi.models.StatusList;
+import com.sina.weibo.sdk.utils.LogUtil;
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.StatusAdapter;
+import com.willian.weibo.adapter.StatusGroupAdapter;
+import com.willian.weibo.bean.ItemInfo;
+import com.willian.weibo.sdk.AccessTokenKeeper;
+import com.willian.weibo.sdk.Constants;
+import com.willian.weibo.utils.DisplayUtils;
+import com.willian.weibo.utils.TitleBarBuilder;
+import com.willian.weibo.utils.ToastUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 当前用户的微博
+ */
+public class MyStatusActivity extends BaseActivity {
+
+    private final static String TAG = "MyStatusActivity";
+
+    /**
+     * 用于获取微博信息流等操作的API
+     */
+    private StatusesAPI mStatusesAPI;
+    /**
+     * 当前页数
+     */
+    private int curPage = 1;
+
+    private View footerView;
+
+    private PullToRefreshListView mListView;
+
+    private List<Status> mStatusList = new ArrayList<Status>();
+
+    private StatusAdapter mStatusAdapter;
+
+    private LinearLayout mTitleLayout;
+
+    private TextView mTitleName;
+
+    private ImageView mArrowImage;
+
+    private List<ItemInfo> groupList = new ArrayList<ItemInfo>();
+
+    private PopupWindow mPopupWindow;
+
+    private ListView groupListView;
+
+    private StatusGroupAdapter groupAdapter;
+    // 过滤类型ID，0：全部、1：原创、2：图片、3：视频、4：音乐，默认为0
+    private int featureType = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_my_status);
+
+        // 获取当前已保存过的 Token
+        Oauth2AccessToken mAccessToken = AccessTokenKeeper.readAccessToken(this);
+        // 对statusAPI实例化
+        mStatusesAPI = new StatusesAPI(this, Constants.APP_KEY, mAccessToken);
+
+        initTitleView();
+
+        initListView();
+
+        loadWeibo(1, 0);
+
+        handleEvent();
+
+        setData();
+    }
+
+    private void initTitleView() {
+
+        new TitleBarBuilder(this)
+                .setTitleText(getResources().getString(R.string.all_status))
+                .setArrowImage(R.mipmap.navigationbar_arrow_down)
+                .setLeftImage(R.drawable.titlebar_back_selector)
+                .setRightImage(R.drawable.userinfo_tabicon_more_selector)
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                        overridePendingTransition(R.anim.slide_out_from_right, R.anim.slide_in_from_left);
+                    }
+                })
+                .setRightOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ToastUtil.showToast(MyStatusActivity.this, "Right", Toast.LENGTH_SHORT);
+                    }
+                });
+
+        mTitleLayout = (LinearLayout) findViewById(R.id.layout_titile);
+        mTitleName = (TextView) findViewById(R.id.tv_title);
+        mArrowImage = (ImageView) findViewById(R.id.iv_arrow);
+    }
+
+    private void initListView() {
+        footerView = View.inflate(this, R.layout.listview_foot, null);
+        mListView = (PullToRefreshListView) findViewById(R.id.lv_status);
+        mStatusAdapter = new StatusAdapter(this, mStatusList);
+        mListView.setAdapter(mStatusAdapter);
+        // 下拉刷新
+        mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                loadWeibo(1, featureType);
+            }
+        });
+
+        mListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
+            @Override
+            public void onLastItemVisible() {
+                ListView listView = mListView.getRefreshableView();
+                if (listView.getFooterViewsCount() > 2) {
+                    loadWeibo(curPage + 1, featureType);
+                }
+            }
+        });
+    }
+
+    /**
+     * 加载当前用户微博
+     *
+     * @param page
+     * @param featureType 过滤类型ID，0：全部、1：原创、2：图片、3：视频、4：音乐，默认为0
+     */
+    private void loadWeibo(final int page, int featureType) {
+        mStatusesAPI.userTimeline(0L, 0L, 50, page, false, featureType, false, new RequestListener() {
+
+            @Override
+            public void onComplete(String response) {
+                if (!TextUtils.isEmpty(response)) {
+                    LogUtil.i(TAG, response);
+                    // 调用 StatusList#parse 解析字符串成微博列表对象
+                    StatusList statuses = StatusList.parse(response);
+                    if (statuses != null && statuses.total_number > 0) {
+                        if (page == 1) {
+                            mStatusList.clear();
+                        }
+                        curPage = page;
+                        // 加载更多数据
+                        loadMoreData(statuses);
+                    } else {
+                        Toast.makeText(MyStatusActivity.this, response,
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onWeiboException(WeiboException e) {
+                LogUtil.e(TAG, e.getMessage());
+                ErrorInfo info = ErrorInfo.parse(e.getMessage());
+                Toast.makeText(MyStatusActivity.this, info.toString(),
+                        Toast.LENGTH_LONG).show();
+            }
+
+        });
+    }
+
+    /**
+     * 加载更多
+     *
+     * @param statuses
+     */
+    private void loadMoreData(StatusList statuses) {
+        for (Status mStatus : statuses.statusList) {
+            if (!mStatusList.contains(mStatus)) {
+                mStatusList.add(mStatus);
+            }
+        }
+        mStatusAdapter.notifyDataSetChanged();
+
+        // 由于API接口限制，最多只能获取5条微博
+        /**
+         if (mStatusList.size() < statuses.total_number) {
+         addFootView(mPullListView, footerView);
+         } else {
+         removeFootView(mPullListView, footerView);
+         }
+         */
+
+        mListView.onRefreshComplete();
+    }
+
+    private void addFootView(PullToRefreshListView pullListView, View footView) {
+        ListView listView = pullListView.getRefreshableView();
+        if (listView.getFooterViewsCount() == 1) {
+            listView.addFooterView(footView);
+        }
+    }
+
+    private void removeFootView(PullToRefreshListView pullListView, View footView) {
+        ListView listView = pullListView.getRefreshableView();
+        if (listView.getFooterViewsCount() > 1) {
+            listView.removeFooterView(footView);
+        }
+    }
+
+    private void handleEvent() {
+        mTitleLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initPopupWindow();
+            }
+        });
+    }
+
+    private void initPopupWindow() {
+        if (mPopupWindow == null) {
+            View popupLayout = View.inflate(this, R.layout.popup_status_group, null);
+            groupListView = (ListView) popupLayout.findViewById(R.id.lv_status_group);
+            mPopupWindow = new PopupWindow(popupLayout, DisplayUtils.getScreenWidthPixels(this) * 2 / 5, ViewGroup.LayoutParams.WRAP_CONTENT);
+            groupAdapter = new StatusGroupAdapter(this, groupList);
+            groupListView.setAdapter(groupAdapter);
+        }
+        mPopupWindow.setFocusable(true);
+        mPopupWindow.setOutsideTouchable(true);
+        // 设置弹出动画
+        mPopupWindow.setAnimationStyle(R.style.popup_window_style);
+        //设置弹出框的背景
+        mPopupWindow.setBackgroundDrawable(new ColorDrawable(0x90000000));
+        // 位于某个View的正下方
+        mPopupWindow.showAsDropDown(mTitleLayout, 0, 35);
+
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                mArrowImage.setImageResource(R.mipmap.navigationbar_arrow_down);
+            }
+        });
+
+        groupListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                for (int i = 0; i < groupList.size(); i++) {
+                    groupList.get(i).setSelected(false);
+                }
+                groupList.get(position).setSelected(true);
+                // 更新标题
+                mTitleName.setText(groupList.get(position).getItemName());
+                // 更新ListView的数据
+                featureType = position;
+                loadWeibo(1, featureType);
+                mStatusAdapter.changeData(mStatusList);
+                // 关闭PopupWindow
+                if (mPopupWindow != null) {
+                    mPopupWindow.dismiss();
+                }
+            }
+        });
+    }
+
+    private void setData() {
+        groupList.add(new ItemInfo(getResources().getString(R.string.all_status), true));
+        groupList.add(new ItemInfo(getResources().getString(R.string.original_status), false));
+        groupList.add(new ItemInfo(getResources().getString(R.string.picture_status), false));
+    }
+}

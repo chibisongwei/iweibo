@@ -1,0 +1,123 @@
+package com.willian.weibo.activity;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.WriteStatusPhotoAdapter;
+import com.willian.weibo.bean.AlbumPhoto;
+import com.willian.weibo.widget.WrapHeightGridView;
+import com.willian.weibo.utils.TitleBarBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 写微博
+ */
+public class WriteStatusActivity extends Activity implements View.OnClickListener {
+
+    // 从相册选择图片
+    public final static int REQUEST_CODE_FORM_ALBUM = 1;
+    // 九宫格图片
+    private WrapHeightGridView mStatusPicGridView;
+    private WriteStatusPhotoAdapter mStatusPicAdapter;
+    private List<String> mPicUrlList = new ArrayList<String>();
+
+    private ImageView mStatusPicImage;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_write_status);
+
+        initView();
+    }
+
+    private void initView() {
+        new TitleBarBuilder(this)
+                .setTitleText(getResources().getText(R.string.send_weibo).toString())
+                .setLeftText(getResources().getText(R.string.cancel).toString())
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                        overridePendingTransition(R.anim.slide_out_from_right, R.anim.slide_in_from_left);
+                    }
+                })
+                .setRightText(getResources().getText(R.string.send).toString())
+                .setRightOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+
+        mStatusPicGridView = (WrapHeightGridView) findViewById(R.id.gv_write_status);
+        mStatusPicAdapter = new WriteStatusPhotoAdapter(this, mPicUrlList, mStatusPicGridView);
+        mStatusPicGridView.setAdapter(mStatusPicAdapter);
+
+        mStatusPicImage = (ImageView) findViewById(R.id.iv_status_picture);
+        mStatusPicImage.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_status_picture:
+                Intent mAlbumIntent = new Intent(this, AlbumActivity.class);
+                startActivityForResult(mAlbumIntent, REQUEST_CODE_FORM_ALBUM);
+                break;
+            case R.id.iv_status_at:
+
+                break;
+            case R.id.iv_status_topic:
+
+                break;
+            case R.id.iv_status_emoji:
+
+                break;
+            case R.id.iv_status_more:
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_CANCELED) {
+            return;
+        }
+        switch (requestCode) {
+            case REQUEST_CODE_FORM_ALBUM:
+                List<AlbumPhoto> selectedPhotos = (List) data.getSerializableExtra("selectedPhotos");
+                for (AlbumPhoto albumPhoto : selectedPhotos) {
+                    String photoUrl = albumPhoto.getPhotoPath();
+                    mPicUrlList.add(photoUrl);
+                }
+                updateImages();
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 更新图片
+     */
+    private void updateImages() {
+        if (mPicUrlList.size() > 0) {
+            mStatusPicGridView.setVisibility(View.VISIBLE);
+            mStatusPicAdapter.notifyDataSetChanged();
+        } else {
+            mStatusPicGridView.setVisibility(View.GONE);
+        }
+    }
+}

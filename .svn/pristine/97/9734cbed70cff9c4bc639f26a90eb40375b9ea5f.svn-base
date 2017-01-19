@@ -1,0 +1,105 @@
+package com.willian.weibo.activity;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.sina.weibo.sdk.exception.WeiboException;
+import com.sina.weibo.sdk.net.RequestListener;
+import com.sina.weibo.sdk.openapi.CommentsAPI;
+import com.sina.weibo.sdk.openapi.models.Status;
+import com.willian.weibo.R;
+import com.willian.weibo.sdk.AccessTokenKeeper;
+import com.willian.weibo.sdk.Constants;
+import com.willian.weibo.utils.TitleBarBuilder;
+import com.willian.weibo.utils.ToastUtil;
+
+/**
+ * 发表评论
+ */
+public class WriteCommentActivity extends BaseActivity {
+
+    /**
+     * 当前 Token 信息
+     */
+    private Oauth2AccessToken mAccessToken;
+    /**
+     * 微博评论接口
+     */
+    private CommentsAPI mCommentsAPI;
+
+    private Status mStatus;
+
+    private EditText writeComment;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_write_status);
+
+        // 获取intent传入的信息
+        mStatus = (Status) getIntent().getSerializableExtra("status");
+
+        initView();
+    }
+
+    private void initView() {
+        new TitleBarBuilder(this)
+                .setTitleText(getResources().getText(R.string.send_comment).toString())
+                .setLeftText(getResources().getText(R.string.cancel).toString())
+                .setRightText(getResources().getText(R.string.send).toString())
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                })
+                .setRightOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sendComment();
+                    }
+                });
+
+        writeComment = (EditText) findViewById(R.id.et_write_status);
+        writeComment.setHint(R.string.hint_text_comment);
+
+        // 获取当前已保存过的 Token
+        mAccessToken = AccessTokenKeeper.readAccessToken(this);
+        // 对statusAPI实例化
+        mCommentsAPI = new CommentsAPI(this, Constants.APP_KEY, mAccessToken);
+    }
+
+    /**
+     * 发评论
+     */
+    private void sendComment() {
+        String commentContent = writeComment.getText().toString();
+        if (!TextUtils.isEmpty(commentContent)) {
+            long statusId = Long.parseLong(mStatus.id);
+            mCommentsAPI.create(commentContent, statusId, false, new RequestListener() {
+                @Override
+                public void onComplete(String response) {
+                    Intent mIntent = new Intent();
+                    mIntent.putExtra("is_send_comment", true);
+                    setResult(RESULT_OK, mIntent);
+                    finish();
+                }
+
+                @Override
+                public void onWeiboException(WeiboException e) {
+
+                }
+            });
+        } else {
+            ToastUtil.showToast(this, getResources().getString(R.string.comment_not_null), Toast.LENGTH_SHORT);
+            return;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+package com.willian.weibo.bean;
+
+/**
+ * Created by willian on 2016/3/17.
+ */
+public class Message {
+
+    private int msgType;
+
+    private String msgContent;
+
+    public Message(String msgContent, int msgType){
+        this.msgContent = msgContent;
+        this.msgType = msgType;
+    }
+
+    public int getMsgType() {
+        return msgType;
+    }
+
+    public String getMsgContent() {
+        return msgContent;
+    }
+
+    public void setMsgType(int msgType) {
+        this.msgType = msgType;
+    }
+
+    public void setMsgContent(String msgContent) {
+        this.msgContent = msgContent;
+    }
+}

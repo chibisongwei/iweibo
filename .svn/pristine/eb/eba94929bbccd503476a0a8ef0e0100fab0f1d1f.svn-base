@@ -1,0 +1,368 @@
+package com.willian.weibo.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.sina.weibo.sdk.exception.WeiboException;
+import com.sina.weibo.sdk.net.RequestListener;
+import com.sina.weibo.sdk.openapi.legacy.FriendshipsAPI;
+import com.sina.weibo.sdk.openapi.models.ErrorInfo;
+import com.sina.weibo.sdk.openapi.models.User;
+import com.sina.weibo.sdk.utils.LogUtil;
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.FriendsAdapter;
+import com.willian.weibo.bean.Contact;
+import com.willian.weibo.bean.FriendshipList;
+import com.willian.weibo.sdk.AccessTokenKeeper;
+import com.willian.weibo.sdk.Constants;
+import com.willian.weibo.utils.LoggerUtil;
+import com.willian.weibo.utils.PinyinUtil;
+import com.willian.weibo.utils.TitleBarBuilder;
+import com.willian.weibo.widget.SideBarButton;
+
+import java.io.Serializable;
+import java.text.CollationKey;
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+/**
+ * 好友列表界面
+ */
+public class FriendsActivity extends BaseActivity {
+
+    private static final String TAG = "FriendsActivity";
+
+    private Oauth2AccessToken mAccessToken;
+
+    private FriendshipsAPI mFriendAPI;
+
+    private ListView mListView;
+
+    private FriendsAdapter mFriendsAdapter;
+    // 联系人
+    private List<Contact> mContactList = new ArrayList<Contact>();
+    // 字母索引集合
+    private List<String> mLetterList = new ArrayList<String>();
+    // 字母索引在ListView的对应位置
+    private Map<String, Integer> mLetterSections = new HashMap<String, Integer>();
+    // 上次第一个可见元素，用于滚动时记录标识
+    private int lastFirstVisibleItem = -1;
+
+    private LinearLayout floatLayout;
+
+    private TextView floatText;
+
+    private SideBarButton mSideBar;
+
+    private RelativeLayout mToastLayout;
+
+    private TextView mToastText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_friends);
+        // 获取当前已保存过的 Token
+        mAccessToken = AccessTokenKeeper.readAccessToken(this);
+        mFriendAPI = new FriendshipsAPI(this, Constants.APP_KEY, mAccessToken);
+        // 初始化View
+        initView();
+        // 加载好友信息
+        //loadFriends(1);
+        setData();
+        // 事件处理
+        handleEvent();
+    }
+
+    private void initView() {
+        new TitleBarBuilder(this)
+                .setLeftImage(R.drawable.titlebar_back_selector)
+                .setTitleText(getResources().getString(R.string.choose_contact))
+                .setRightButton(getResources().getString(R.string.chat))
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                        overridePendingTransition(R.anim.slide_out_from_right, R.anim.slide_in_from_left);
+                    }
+                })
+                .setRightOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        List<Contact> selectedContact = mFriendsAdapter.getFriendList();
+                        Intent mIntent = new Intent(FriendsActivity.this, ChatActivity.class);
+                        // 选择的联系人
+                        mIntent.putExtra("selectedContact", (Serializable) selectedContact);
+                        startActivity(mIntent);
+                        finish();
+                        overridePendingTransition(R.anim.slide_out_to_left, R.anim.slide_in_from_right);
+                    }
+                });
+
+        floatLayout = (LinearLayout) findViewById(R.id.layout_float);
+        floatText = (TextView) findViewById(R.id.tv_float);
+
+        mListView = (ListView) findViewById(R.id.lv_friends);
+
+        mToastLayout = (RelativeLayout) findViewById(R.id.layout_toast);
+        mToastText = (TextView) findViewById(R.id.tv_toast_letter);
+        mSideBar = (SideBarButton) findViewById(R.id.sidebar);
+    }
+
+
+    private void handleEvent() {
+        // ListView滚动监听
+        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                // 获取下一个可见Item的排序字母
+                if (mContactList.size() > 0) {
+                    LoggerUtil.showLog(TAG, "=======lastFirstVisibleItem=======", lastFirstVisibleItem);
+                    String currLetter = mContactList.get(firstVisibleItem).getSortLetter();
+                    String nextLetter = mContactList.get(firstVisibleItem + 1).getSortLetter();
+                    // 下一个可见Item排序字母的位置
+                    int nextPosition = mLetterSections.get(nextLetter);
+                    if (firstVisibleItem != lastFirstVisibleItem) {
+                        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) floatLayout.getLayoutParams();
+                        layoutParams.topMargin = 0;
+                        floatLayout.setLayoutParams(layoutParams);
+                        if (nextPosition == firstVisibleItem) {
+                            floatText.setText(nextLetter);
+                        } else {
+                            floatText.setText(currLetter);
+                        }
+                    }
+                    if (nextPosition == firstVisibleItem + 1) {
+                        View childView = view.getChildAt(0);
+                        if (childView != null) {
+                            int floatHeight = floatLayout.getHeight();
+                            int itemBottom = childView.getBottom();
+                            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) floatLayout.getLayoutParams();
+                            if (itemBottom < floatHeight) {
+                                int distance = itemBottom - floatHeight;
+                                layoutParams.topMargin = distance;
+                                floatLayout.setLayoutParams(layoutParams);
+                            } else {
+                                if (layoutParams.topMargin != 0) {
+                                    layoutParams.topMargin = 0;
+                                    floatLayout.setLayoutParams(layoutParams);
+                                }
+                            }
+                        }
+                    }
+                    lastFirstVisibleItem = firstVisibleItem;
+                }
+            }
+        });
+
+        // SideBar触摸滑动监听
+        mSideBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                float sidebarHeight = mSideBar.getHeight();
+                float y = event.getY();
+                int sectionPosition = (int) ((y / sidebarHeight) / (1f / 27f));
+                if (sectionPosition < 0) {
+                    sectionPosition = 0;
+                } else if (sectionPosition > 26) {
+                    sectionPosition = 26;
+                }
+                String letter = mSideBar.sections[sectionPosition];
+                // 索引字母在ListView中的位置
+                int letterIndex = mLetterSections.get(letter) == null ? lastFirstVisibleItem : mLetterSections.get(letter);
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        mToastLayout.setVisibility(View.VISIBLE);
+                        mToastText.setText(letter);
+                        mListView.setSelection(letterIndex);
+                        mSideBar.setBackgroundResource(R.drawable.common_button_alpha_highlighted);
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        mToastText.setText(letter);
+                        mListView.setSelection(letterIndex);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        mToastLayout.setVisibility(View.GONE);
+                        mSideBar.setBackgroundResource(R.drawable.common_button_alpha);
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+    /**
+     * 加载好友信息
+     *
+     * @param page
+     */
+    private void loadFriends(int page) {
+        // 获取当前用户ID
+        long uid = Long.parseLong(mAccessToken.getUid());
+        mFriendAPI.bilateral(uid, 50, page, new RequestListener() {
+            @Override
+            public void onComplete(String response) {
+                if (response.startsWith("{\"users\"")) {
+                    // 调用 FriendshipList#parse 解析字符串成关注列表对象
+                    FriendshipList friendships = FriendshipList.parse(response);
+                    if (friendships != null && friendships.total_number > 0) {
+                        List<User> mFriendshipList = friendships.userList;
+                        loadMoreData(mFriendshipList);
+                    }
+                } else {
+                    Toast.makeText(FriendsActivity.this, response,
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onWeiboException(WeiboException e) {
+                LogUtil.e(TAG, e.getMessage());
+                ErrorInfo info = ErrorInfo.parse(e.getMessage());
+                Toast.makeText(FriendsActivity.this, info.toString(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void loadMoreData(List<User> mFriendshipList) {
+        for (User mUser : mFriendshipList) {
+            String headUrl = mUser.avatar_large;
+            String userName = mUser.name;
+            String letter = PinyinUtil.convertToFirstSpell(userName).substring(0, 1);
+            Contact mContact = new Contact();
+            mContact.setSortLetter(letter);
+            mContact.setHeadUrl(headUrl);
+            mContact.setUserName(userName);
+            mContactList.add(mContact);
+            // 按首字母进行排序；
+            Collections.sort(mContactList, new Comparator<Contact>() {
+
+                private Collator mCollator = Collator.getInstance(Locale.CHINA);
+
+                @Override
+                public int compare(Contact lhs, Contact rhs) {
+                    CollationKey key1 = mCollator.getCollationKey(lhs.getSortLetter());
+                    CollationKey key2 = mCollator.getCollationKey(rhs.getSortLetter());
+                    return mCollator.compare(key1.getSourceString(), key2.getSourceString());
+                }
+            });
+            if (!mLetterList.contains(letter)) {
+                mLetterList.add(letter);
+            }
+        }
+        if (mContactList.size() > 0) {
+            mFriendsAdapter = new FriendsAdapter(this, mContactList, mLetterList);
+            mListView.setAdapter(mFriendsAdapter);
+            mLetterSections = mFriendsAdapter.getLetterSection();
+        }
+    }
+
+    /**
+     * 模拟数据
+     */
+    private void setData() {
+        User user = mApplication.currentUser;
+        for (int i = 0; i < 2; i++) {
+            String headUrl = user.avatar_large;
+            String userName = "A" + user.name;
+            String letter = PinyinUtil.convertToFirstSpell(userName).substring(0, 1);
+            Contact mContact = new Contact();
+            mContact.setSortLetter(letter);
+            mContact.setHeadUrl(headUrl);
+            mContact.setUserName(userName);
+            mContactList.add(mContact);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            String headUrl = user.avatar_large;
+            String userName = "F" + user.name;
+            String letter = PinyinUtil.convertToFirstSpell(userName).substring(0, 1);
+            Contact mContact = new Contact();
+            mContact.setSortLetter(letter);
+            mContact.setHeadUrl(headUrl);
+            mContact.setUserName(userName);
+            mContactList.add(mContact);
+        }
+
+        for (int i = 0; i < 2; i++) {
+            String headUrl = user.avatar_large;
+            String userName = "J" + user.name;
+            String letter = PinyinUtil.convertToFirstSpell(userName).substring(0, 1);
+            Contact mContact = new Contact();
+            mContact.setSortLetter(letter);
+            mContact.setHeadUrl(headUrl);
+            mContact.setUserName(userName);
+            mContactList.add(mContact);
+        }
+
+        for (int i = 0; i < 4; i++) {
+            String headUrl = user.avatar_large;
+            String userName = "Q" + user.name;
+            String letter = PinyinUtil.convertToFirstSpell(userName).substring(0, 1);
+            Contact mContact = new Contact();
+            mContact.setSortLetter(letter);
+            mContact.setHeadUrl(headUrl);
+            mContact.setUserName(userName);
+            mContactList.add(mContact);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            String headUrl = user.avatar_large;
+            String userName = "X" + user.name;
+            String letter = PinyinUtil.convertToFirstSpell(userName).substring(0, 1);
+            Contact mContact = new Contact();
+            mContact.setSortLetter(letter);
+            mContact.setHeadUrl(headUrl);
+            mContact.setUserName(userName);
+            mContactList.add(mContact);
+        }
+
+        // 按首字母进行排序；
+        Collections.sort(mContactList, new Comparator<Contact>() {
+
+            private Collator mCollator = Collator.getInstance(Locale.CHINA);
+
+            @Override
+            public int compare(Contact lhs, Contact rhs) {
+                CollationKey key1 = mCollator.getCollationKey(lhs.getSortLetter());
+                CollationKey key2 = mCollator.getCollationKey(rhs.getSortLetter());
+                return mCollator.compare(key1.getSourceString(), key2.getSourceString());
+            }
+        });
+
+        for (int i = 0; i < mContactList.size(); i++) {
+            String letter = mContactList.get(i).getSortLetter();
+            if (!mLetterList.contains(letter)) {
+                mLetterList.add(letter);
+            }
+        }
+
+        if (mContactList.size() > 0) {
+            mFriendsAdapter = new FriendsAdapter(this, mContactList, mLetterList);
+            mListView.setAdapter(mFriendsAdapter);
+            mLetterSections = mFriendsAdapter.getLetterSection();
+        }
+    }
+}

@@ -1,0 +1,112 @@
+package com.willian.weibo.activity;
+
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.sina.weibo.sdk.openapi.models.Status;
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.ImageBrowserAdapter;
+import com.willian.weibo.constant.Constant;
+import com.willian.weibo.utils.ImageUtil;
+
+import java.util.List;
+
+/**
+ * 图片浏览界面
+ */
+public class ImageBrowserActivity extends BaseActivity implements View.OnClickListener {
+
+    private int mPosition;
+
+    private Status mStatus;
+
+    private List<String> imageUrlList;
+
+    private ImageBrowserAdapter mImageAdapter;
+
+    private ViewPager mImageBrowser;
+
+    private TextView mImageIndex;
+
+    private Button mSaveButton;
+
+    private TextView mLikeText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_image_browser);
+
+        initData();
+
+        initView();
+
+        setData();
+    }
+
+    private void initData() {
+        mStatus = (Status) getIntent().getSerializableExtra("status");
+        mPosition = getIntent().getIntExtra("position", 0);
+        imageUrlList = mStatus.pic_urls;
+    }
+
+    private void initView() {
+        mImageBrowser = (ViewPager) findViewById(R.id.vp_image_browse);
+        mImageIndex = (TextView) findViewById(R.id.tv_image_index);
+        mSaveButton = (Button) findViewById(R.id.btn_save);
+        mLikeText = (TextView) findViewById(R.id.tv_like);
+
+        mSaveButton.setOnClickListener(this);
+    }
+
+    private void setData() {
+        mImageAdapter = new ImageBrowserAdapter(this, imageUrlList);
+        mImageBrowser.setAdapter(mImageAdapter);
+
+        final int size = imageUrlList.size();
+
+        if (size > 1) {
+            mImageIndex.setVisibility(View.VISIBLE);
+            mImageIndex.setText((mPosition + 1) + "/" + size);
+        } else {
+            mImageIndex.setVisibility(View.GONE);
+        }
+
+        mImageBrowser.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                int index = position % size;
+                mImageIndex.setText((index + 1) + "/" + size);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        mImageBrowser.setCurrentItem(mPosition);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_save:
+                Bitmap bitmap = mImageAdapter.getBitmap(mImageBrowser.getCurrentItem());
+                // 保存图片
+                ImageUtil.saveImageToAlbum(ImageBrowserActivity.this, Constant.SAVE_PICTURE_DIR, bitmap);
+                break;
+            default:
+                break;
+        }
+    }
+}

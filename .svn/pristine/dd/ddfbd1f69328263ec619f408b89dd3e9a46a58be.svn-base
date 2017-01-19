@@ -1,0 +1,54 @@
+package com.willian.weibo.bean;
+
+/**
+ * Created by willian on 2016/4/9.
+ */
+public class MineItem {
+
+    private boolean isShowDivider;
+
+    private int itemImage;
+
+    private String itemName;
+
+    private String itemCaption;
+
+    public MineItem(boolean isShowDivider, int itemImage, String itemName, String itemCaption) {
+        this.isShowDivider = isShowDivider;
+        this.itemImage = itemImage;
+        this.itemName = itemName;
+        this.itemCaption = itemCaption;
+    }
+
+    public boolean isShowDivider() {
+        return isShowDivider;
+    }
+
+    public void setShowDivider(boolean showDivider) {
+        isShowDivider = showDivider;
+    }
+
+    public int getItemImage() {
+        return itemImage;
+    }
+
+    public void setItemImage(int itemImage) {
+        this.itemImage = itemImage;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public String getItemCaption() {
+        return itemCaption;
+    }
+
+    public void setItemCaption(String itemCaption) {
+        this.itemCaption = itemCaption;
+    }
+}

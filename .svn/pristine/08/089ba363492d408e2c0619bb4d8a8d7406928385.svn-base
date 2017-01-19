@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/transparent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:padding="12dp"
+        android:src="@drawable/titlebar_back_selector"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/tv_title_style"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:maxWidth="224dp" />
+
+    <ImageView
+        android:id="@+id/iv_more"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="12dp"
+        android:src="@drawable/userinfo_tabicon_more_selector" />
+
+    <ImageView
+        android:id="@+id/iv_search"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/iv_more"
+        android:padding="12dp"
+        android:src="@drawable/userinfo_tabicon_search_selector" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray"
+        android:visibility="gone" />
+
+</RelativeLayout>

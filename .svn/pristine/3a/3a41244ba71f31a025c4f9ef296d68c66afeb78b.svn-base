@@ -1,0 +1,78 @@
+package com.willian.weibo.activity;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.ChatAdapter;
+import com.willian.weibo.bean.Message;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by willian on 2016/3/17.
+ */
+public class ChatActivity extends Activity {
+
+    private List<Message> mList = new ArrayList<Message>();
+
+    private ChatAdapter mAdatper;
+
+    private EditText inputText;
+
+    private Button sendButton;
+
+    private ListView mListView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_chat);
+
+        initMsg();
+
+        mAdatper = new ChatAdapter(ChatActivity.this, mList);
+
+        inputText = (EditText) findViewById(R.id.msg_text);
+
+        sendButton = (Button) findViewById(R.id.send_btn);
+
+        mListView = (ListView) findViewById(R.id.list_view);
+
+        mListView.setAdapter(mAdatper);
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String content = inputText.getText().toString();
+                if(!"".equals(content)){
+                    Message msg = new Message(content, 1);
+                    mList.add(msg);
+
+                    mAdatper.notifyDataSetChanged();
+                    mListView.setSelection(mList.size());
+                    inputText.setText("");
+                }
+            }
+        });
+    }
+
+    private void initMsg() {
+        Message msg1 = new Message("Hello",0);
+        mList.add(msg1);
+        Message msg2 = new Message("Bonjour",1);
+        mList.add(msg2);
+        Message msg3 = new Message("How are you",0);
+        mList.add(msg3);
+        Message msg4 = new Message("Common ca va",1);
+        mList.add(msg4);
+    }
+
+
+}

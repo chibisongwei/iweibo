@@ -1,0 +1,115 @@
+package com.willian.weibo.utils;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ImageSpan;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.willian.weibo.R;
+import com.willian.weibo.activity.UserInfoActivity;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * 处理@用户、话题和表情的显示
+ */
+public class StringUtil {
+
+    public static SpannableString getWeiboContent(final Context context, final TextView textView, String resource) {
+
+        String regexAt = "@[\u4e00-\u9fa5\\w]+";
+        String regexTopic = "#[\u4e00-\u9fa5\\w]+#";
+        String regexEmoji = "\\[[\u4e00-\u9fa5\\w]+\\]";
+
+        String regex = "(" + regexAt + ")|(" + regexTopic + ")|(" + regexEmoji + ")";
+
+        SpannableString spannableString = new SpannableString(resource);
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(spannableString);
+
+        if (matcher.find()) {
+            textView.setMovementMethod(LinkMovementMethod.getInstance());
+            matcher.reset();
+        }
+
+        while (matcher.find()) {
+            final String atStr = matcher.group(1);
+            String topicStr = matcher.group(2);
+            String emojiStr = matcher.group(3);
+
+            if (!TextUtils.isEmpty(atStr)) {
+                int start = matcher.start(1);
+                MyClickableSpan clickableSpan = new MyClickableSpan(context) {
+                    @Override
+                    public void onClick(View widget) {
+                        Intent mIntent = new Intent(context, UserInfoActivity.class);
+                        mIntent.putExtra("userName", atStr.substring(1));
+                        context.startActivity(mIntent);
+                    }
+                };
+
+                spannableString.setSpan(clickableSpan, start, start + atStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            if (!TextUtils.isEmpty(topicStr)) {
+                int start = matcher.start(2);
+                MyClickableSpan clickableSpan = new MyClickableSpan(context) {
+                    @Override
+                    public void onClick(View widget) {
+                        ToastUtil.showToast(context, "话题", Toast.LENGTH_SHORT);
+                    }
+                };
+
+                spannableString.setSpan(clickableSpan, start, start + topicStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            if (!TextUtils.isEmpty(emojiStr)) {
+                int startIndex = matcher.start(3);
+                int imageRes = EmotionUtil.getImageByName(emojiStr);
+                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), imageRes);
+
+                if (bitmap != null) {
+                    int size = (int) textView.getTextSize();
+                    // 图片压缩，宽高与TextView保持一致
+                    bitmap = Bitmap.createScaledBitmap(bitmap, size, size, true);
+                    ImageSpan imageSpan = new ImageSpan(context, bitmap);
+                    spannableString.setSpan(imageSpan, startIndex, startIndex + emojiStr.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
+            }
+        }
+
+        return spannableString;
+    }
+
+    static class MyClickableSpan extends ClickableSpan {
+
+        private Context context;
+
+        public MyClickableSpan(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onClick(View widget) {
+
+        }
+
+        @Override
+        public void updateDrawState(TextPaint ds) {
+            ds.setColor(context.getResources().getColor(R.color.text_blue));
+            ds.setUnderlineText(false);
+        }
+    }
+}

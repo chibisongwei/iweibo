@@ -1,0 +1,238 @@
+[
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_home_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\tab_home_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_search_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\tab_search_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_add_bg_pressed.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\icon_add_bg_pressed.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\text_color_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\text_color_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\toolbar_at_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\toolbar_at_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tabbar_add_button_highlighted.9.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\tabbar_add_button_highlighted.9.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_user_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\tab_user_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_white2gray_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\bg_white2gray_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_message_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\tab_message_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_button_blue.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\Weibo\\weiboSDK\\unspecified\\res\\drawable\\com_sina_weibo_sdk_button_blue.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\toolbar_topic_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\toolbar_topic_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_login_button_with_account_text.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\Weibo\\weiboSDK\\unspecified\\res\\drawable\\com_sina_weibo_sdk_login_button_with_account_text.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_seekbar_thumb_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\indicator_bg_bottom.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\Weibo\\PullToRefresh\\unspecified\\res\\drawable\\indicator_bg_bottom.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_add_bg_normal.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\icon_add_bg_normal.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\toolbar_emoji_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\toolbar_emoji_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\title_text_color_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\title_text_color_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_add_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\icon_add_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\titlebar_icon_more_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\titlebar_icon_more_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_full_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_ratingbar_full_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\retweet_bg_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\retweet_bg_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\titlebar_radar_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\titlebar_radar_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_login_button_with_original_logo.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\Weibo\\weiboSDK\\unspecified\\res\\drawable\\com_sina_weibo_sdk_login_button_with_original_logo.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\status_detail_tab_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\status_detail_tab_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_tran2gray_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\bg_tran2gray_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\titlebar_friend_attention_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\titlebar_friend_attention_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_dialog_material_background_dark.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_add_bg_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\icon_add_bg_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\pic_bg.9.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\pic_bg.9.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\toolbar_add_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\toolbar_add_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_button_grey.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\Weibo\\weiboSDK\\unspecified\\res\\drawable\\com_sina_weibo_sdk_button_grey.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tabbar_add_button.9.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\tabbar_add_button.9.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\titlebar_back_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\titlebar_back_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_login_button_with_frame_logo.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\Weibo\\weiboSDK\\unspecified\\res\\drawable\\com_sina_weibo_sdk_login_button_with_frame_logo.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_light.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_dialog_material_background_light.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\toolbar_picture_selector.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\drawable\\toolbar_picture_selector.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\indicator_bg_top.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\Weibo\\PullToRefresh\\unspecified\\res\\drawable\\indicator_bg_top.xml"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_btn_check_material.xml"
+    }
+]

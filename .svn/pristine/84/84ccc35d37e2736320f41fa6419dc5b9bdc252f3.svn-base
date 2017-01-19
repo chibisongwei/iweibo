@@ -1,0 +1,26 @@
+package com.willian.weibo.activity;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+import com.willian.weibo.utils.ActivityManager;
+
+/**
+ * Created by willian on 2016/3/26.
+ */
+public class BaseActivity extends Activity {
+
+    private ActivityManager activityManager = ActivityManager.getInstance();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        activityManager.addActivity(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        activityManager.finishAllActivity();
+    }
+}

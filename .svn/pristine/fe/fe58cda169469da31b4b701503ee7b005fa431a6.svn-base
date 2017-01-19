@@ -1,0 +1,99 @@
+package com.willian.weibo.utils;
+
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.willian.weibo.R;
+
+/**
+ * TitleBar工具类
+ */
+public class TitleBarBuilder {
+
+    private View mView;
+
+    private TextView mTitleTxt;
+
+    private TextView mLeftText;
+
+    private TextView mRightText;
+
+    private ImageView mLeftImage;
+
+    private ImageView mRightImage;
+
+    public TitleBarBuilder(View view) {
+        mView = view.findViewById(R.id.title_bar_layout);
+        mTitleTxt = (TextView) mView.findViewById(R.id.title_bar_tv);
+        mLeftText = (TextView) mView.findViewById(R.id.left_tv);
+        mRightText = (TextView) mView.findViewById(R.id.right_tv);
+        mLeftImage = (ImageView) mView.findViewById(R.id.left_iv);
+        mRightImage = (ImageView) mView.findViewById(R.id.right_iv);
+    }
+
+    public TitleBarBuilder(Activity activity) {
+        mView = activity.findViewById(R.id.title_bar_layout);
+        mTitleTxt = (TextView) mView.findViewById(R.id.title_bar_tv);
+        mLeftText = (TextView) mView.findViewById(R.id.left_tv);
+        mRightText = (TextView) mView.findViewById(R.id.right_tv);
+        mLeftImage = (ImageView) mView.findViewById(R.id.left_iv);
+        mRightImage = (ImageView) mView.findViewById(R.id.right_iv);
+    }
+
+    public TitleBarBuilder setTitleBgColor(int resId) {
+        mTitleTxt.setBackgroundResource(resId);
+        return this;
+    }
+
+    public TitleBarBuilder setTitleText(String text) {
+        mTitleTxt.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        mTitleTxt.setText(text);
+        return this;
+    }
+
+    public TitleBarBuilder setLeftImage(int resId) {
+        mLeftImage.setVisibility(resId > 0 ? View.VISIBLE : View.GONE);
+        mLeftImage.setImageResource(resId);
+        return this;
+    }
+
+    public TitleBarBuilder setLeftOnClickListener(View.OnClickListener listener) {
+        if (mLeftImage.getVisibility() == View.VISIBLE) {
+            mLeftImage.setOnClickListener(listener);
+        } else if (mLeftText.getVisibility() == View.VISIBLE) {
+            mLeftText.setOnClickListener(listener);
+        }
+        return this;
+    }
+
+    public TitleBarBuilder setLeftText(String text) {
+        mLeftText.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        mLeftText.setText(text);
+        return this;
+    }
+
+    public TitleBarBuilder setRightImage(int resId) {
+        mRightImage.setVisibility(resId > 0 ? View.VISIBLE : View.GONE);
+        mRightImage.setImageResource(resId);
+        return this;
+    }
+
+    public TitleBarBuilder setRightText(String text) {
+        mRightText.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
+        mRightText.setText(text);
+        return this;
+    }
+
+    public TitleBarBuilder setRightOnClickListener(View.OnClickListener listener) {
+        if (mRightImage.getVisibility() == View.VISIBLE) {
+            mRightImage.setOnClickListener(listener);
+        } else if (mRightText.getVisibility() == View.VISIBLE) {
+            mRightText.setOnClickListener(listener);
+        }
+        return this;
+    }
+
+}

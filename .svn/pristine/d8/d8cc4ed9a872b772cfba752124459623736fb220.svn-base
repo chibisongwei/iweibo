@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="text_size_display">34sp</dimen>
+    <dimen name="text_size_headline">24sp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_size_sub_head">16sp</dimen>
+    <dimen name="text_size_body">16sp</dimen>
+    <dimen name="text_size_other">14sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+
+    <dimen name="top_title_bar_height">48dp</dimen>
+    <dimen name="bottom_action_bar_height">48dp</dimen>
+
+    <dimen name="divider_size">0.1dp</dimen>
+</resources>

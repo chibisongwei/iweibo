@@ -1,0 +1,26 @@
+package com.willian.weibo.activity;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+import com.willian.weibo.R;
+
+/**
+ * 写微博
+ */
+public class WriteStatusActivity extends Activity {
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_write_status);
+
+        initView();
+    }
+
+    private void initView(){
+
+    }
+}

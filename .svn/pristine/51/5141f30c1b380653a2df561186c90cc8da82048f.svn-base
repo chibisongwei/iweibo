@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fl_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View style="@style/vertical_divider_style" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        android:background="#fafafa"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            style="@style/rb_style"
+            android:checked="true"
+            android:drawableTop="@drawable/tab_home_selector"
+            android:drawablePadding="-8dp"
+            android:text="@string/tab_home"/>
+
+        <RadioButton
+            android:id="@+id/rb_message"
+            style="@style/rb_style"
+            android:drawableTop="@drawable/tab_message_selector"
+            android:drawablePadding="-8dp"
+            android:text="@string/tab_message"/>
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@drawable/icon_add_selector"
+            android:background="@drawable/icon_add_bg_selector"/>
+
+        <RadioButton
+            android:id="@+id/rb_search"
+            style="@style/rb_style"
+            android:drawableTop="@drawable/tab_search_selector"
+            android:drawablePadding="-8dp"
+            android:text="@string/tab_search"/>
+
+        <RadioButton
+            android:id="@+id/rb_user"
+            style="@style/rb_style"
+            android:drawableTop="@drawable/tab_user_selector"
+            android:drawablePadding="-8dp"
+            android:text="@string/tab_user"/>
+
+    </RadioGroup>
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+package com.willian.weibo.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.willian.weibo.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 微博配图适配器
+ */
+public class WriteStatusPhotoAdapter extends BaseAdapter {
+
+    private Context mContext;
+    private LayoutInflater mInflater;
+    private List<String> mPhotoUrlList;
+    private ImageLoader mImageLoader;
+    private GridView mGridView;
+
+    public WriteStatusPhotoAdapter(Context mContext, List<String> mPhotoList, GridView mGridView) {
+        this.mContext = mContext;
+        this.mPhotoUrlList = mPhotoList;
+        this.mGridView = mGridView;
+        mInflater = LayoutInflater.from(mContext);
+        mImageLoader = ImageLoader.getInstance();
+    }
+
+    @Override
+    public int getCount() {
+        return mPhotoUrlList.size() > 0 ? mPhotoUrlList.size() + 1 : 0;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mPhotoUrlList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder = null;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.gridview_item_pic, null);
+            viewHolder = new ViewHolder();
+            viewHolder.weiboPhoto = (ImageView) convertView.findViewById(R.id.iv_picture);
+            viewHolder.deleteIcon = (ImageView) convertView.findViewById(R.id.iv_delete);
+            // 第二次绘制ListView时，直接从getTag()中取出
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        // 获取item之间的水平间距
+        int horizontalSpacing = mGridView.getHorizontalSpacing();
+        // 获取列数
+        int numColums = mGridView.getNumColumns();
+        // 计算每个item的宽度
+        int ItemWidth = (mGridView.getWidth() - (numColums - 1) * horizontalSpacing
+                - mGridView.getPaddingLeft() - mGridView.getPaddingRight()) / numColums;
+        // 设置ImageView的宽度和高度
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ItemWidth, ItemWidth);
+        viewHolder.weiboPhoto.setLayoutParams(params);
+
+        if (position < getCount() - 1) {
+            viewHolder.weiboPhoto.setVisibility(View.VISIBLE);
+            String photoUrl = mPhotoUrlList.get(position);
+            mImageLoader.displayImage(photoUrl, viewHolder.weiboPhoto);
+
+            viewHolder.deleteIcon.setVisibility(View.VISIBLE);
+            viewHolder.deleteIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mPhotoUrlList.remove(position);
+                    notifyDataSetChanged();
+                }
+            });
+        } else {
+            if (position > 8) {// 最多只能添加9张图片
+                viewHolder.weiboPhoto.setVisibility(View.GONE);
+            } else {
+                viewHolder.weiboPhoto.setVisibility(View.VISIBLE);
+                viewHolder.weiboPhoto.setImageResource(R.drawable.compose_pic_add_selector);
+            }
+            viewHolder.deleteIcon.setVisibility(View.GONE);
+        }
+
+        return convertView;
+    }
+
+    public static class ViewHolder {
+        public ImageView weiboPhoto;
+        public ImageView deleteIcon;
+    }
+}

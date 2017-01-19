@@ -1,0 +1,69 @@
+package com.willian.weibo.activity;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.willian.weibo.R;
+import com.willian.weibo.sdk.AccessTokenKeeper;
+
+/**
+ * 启动Activity
+ */
+public class StartActivity extends Activity {
+
+    private ImageView mImageView;
+
+    private Oauth2AccessToken mAccessToken;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        /**
+         requestWindowFeature(Window.FEATURE_NO_TITLE);
+         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+         WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
+        setContentView(R.layout.activity_start);
+
+        mAccessToken = AccessTokenKeeper.readAccessToken(this);
+
+        mImageView = (ImageView) findViewById(R.id.logo_img);
+
+        AlphaAnimation mAnimation = new AlphaAnimation(0.0f, 1.0f);
+        //设置动画渐变时间为3S
+        mAnimation.setDuration(3000);
+        mAnimation.setAnimationListener(new Animation.AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+
+            //动画结束，界面跳转
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                if (mAccessToken.isSessionValid()) {
+                    Intent intent = new Intent(StartActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else { // mAccessToken失效，则跳转至登录界面
+                    Intent intent = new Intent(StartActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+
+        mImageView.setAnimation(mAnimation);
+    }
+}

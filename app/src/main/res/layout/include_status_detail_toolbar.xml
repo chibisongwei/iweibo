@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_color"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/layout_retweet"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white2gray_selector"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/toolbar_icon_retweet" />
+
+            <TextView
+                style="@style/tv_subhead_style"
+                android:layout_marginLeft="8dp"
+                android:text="@string/retweet"
+                android:textColor="@color/text_gray" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="16dp"
+            android:background="@color/divider_color"></View>
+
+        <LinearLayout
+            android:id="@+id/layout_comment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white2gray_selector"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/toolbar_icon_comment" />
+
+            <TextView
+                style="@style/tv_subhead_style"
+                android:layout_marginLeft="8dp"
+                android:text="@string/comment"
+                android:textColor="@color/text_gray" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="16dp"
+            android:background="@color/divider_color"></View>
+
+        <LinearLayout
+            android:id="@+id/layout_attitude"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white2gray_selector"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/toolbar_icon_unlike" />
+
+            <TextView
+                android:id="@+id/tv_like_count"
+                style="@style/tv_subhead_style"
+                android:layout_marginLeft="8dp"
+                android:text="@string/attitude"
+                android:textColor="@color/text_gray" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

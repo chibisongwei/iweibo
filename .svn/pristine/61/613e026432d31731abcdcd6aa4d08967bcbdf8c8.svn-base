@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="gray">#eeeeee</color>
+    <color name="orange">#FFA500</color>
+    <color name="dark_orange">#FF6600</color>
+
+    <color name="bg_white">#ffffff</color>
+    <color name="bg_gray">#eeeeee</color>
+    <color name="bg_gray_dark">#d3d3d3</color>
+
+    <color name="text_black">#232323</color>
+    <color name="text_blue">#4c7dac</color>
+    <color name="text_orange">#ff8033</color>
+    <color name="text_gray">#565656</color>
+    <color name="text_light_gray">#898989</color>
+
+    <color name="divider_color">#d6d6d6</color>
+
+    <color name="image_bg_gray">#88000000</color>
+    <!-- popup蒙板 -->
+    <color name="hide_bg">#88323232</color>
+
+    <color name="alpha_white">#49ffffff</color>
+    <color name="alpha_black">#49000000</color>
+
+    <color name="write_status_bottom_bar_bg">#f9f9f9</color>
+    <color name="tab_emotion_bg_normal">#f2f2f2</color>
+    <color name="tab_emotion_bg_pressed">#dfdfdf</color>
+</resources>

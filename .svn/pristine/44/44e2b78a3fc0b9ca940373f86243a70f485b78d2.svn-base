@@ -1,0 +1,66 @@
+package com.willian.weibo.fragment;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.ItemAdapter;
+import com.willian.weibo.bean.ItemInfo;
+import com.willian.weibo.utils.TitleBarBuilder;
+import com.willian.weibo.utils.ToastUtil;
+import com.willian.weibo.widget.WrapHeighListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 消息界面
+ */
+public class MessageFragment extends Fragment {
+
+    private View mView;
+
+    private WrapHeighListView mListView;
+
+    private ItemAdapter mItemAdapter;
+
+    private List<ItemInfo> itemList = new ArrayList<ItemInfo>();
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mView = inflater.inflate(R.layout.fragment_message, container, false);
+        initView();
+
+        setItem();
+
+        return mView;
+    }
+
+    private void initView() {
+        new TitleBarBuilder(mView)
+                .setLeftText(getResources().getString(R.string.find_group))
+                .setTitleText(getResources().getText(R.string.tab_message).toString())
+                .setRightImage(R.drawable.icon_newchat_selector)
+                .setRightOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ToastUtil.showToast(getActivity(), "Message", Toast.LENGTH_SHORT);
+                    }
+                });
+
+        mListView = (WrapHeighListView) mView.findViewById(R.id.lv_msg_items);
+        mItemAdapter = new ItemAdapter(getActivity(), itemList);
+        mListView.setAdapter(mItemAdapter);
+    }
+
+    private void setItem() {
+        itemList.add(new ItemInfo(false, R.mipmap.messagescenter_at, getResources().getText(R.string.new_friend).toString(), "", true));
+        itemList.add(new ItemInfo(false, R.mipmap.messagescenter_comments, getResources().getText(R.string.new_task).toString(), "", true));
+        itemList.add(new ItemInfo(false, R.mipmap.messagescenter_good, getResources().getText(R.string.my_album).toString(), "", true));
+        mItemAdapter.notifyDataSetChanged();
+    }
+}

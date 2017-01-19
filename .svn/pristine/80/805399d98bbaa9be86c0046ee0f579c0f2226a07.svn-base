@@ -1,0 +1,56 @@
+package com.willian.weibo.widget;
+
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.PopupWindow;
+
+import com.willian.weibo.R;
+
+/**
+ * 自定义PopupWindow
+ */
+
+public class MyPopupWindow extends PopupWindow {
+
+    public MyPopupWindow(Context mContext, BaseAdapter mAdapter, int reqWidth, int reqHeight) {
+        LayoutInflater mInflater = (LayoutInflater) mContext
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View mView = mInflater.inflate(R.layout.popup_window, null);
+
+        WrapHeighListView mListView = (WrapHeighListView) mView.findViewById(R.id.lv_popup_window);
+        mListView.setAdapter(mAdapter);
+
+        this.setContentView(mView);
+        // 设置popwindow的宽度
+        this.setWidth(reqWidth);
+        // 设置popwindow的高度
+        this.setHeight(reqHeight);
+        // 设置popwindow可点击
+        this.setFocusable(true);
+        // 如果点击popwindow以外的区域，则关闭popwindow
+        this.setOutsideTouchable(true);
+        this.update();
+        // 设置颜色为半透明
+        ColorDrawable dw = new ColorDrawable(0000000000);
+        this.setBackgroundDrawable(dw);
+        // 设置弹出动画效果
+        this.setAnimationStyle(R.style.popup_window_style);
+    }
+
+    /**
+     * 显示PopWindow
+     *
+     * @param anchorView
+     */
+    public void showPopupWindow(View anchorView) {
+        if (!this.isShowing()) {
+            // 相对某个控件的位置
+            this.showAsDropDown(anchorView, -50, 0);
+        } else {
+            this.dismiss();
+        }
+    }
+}

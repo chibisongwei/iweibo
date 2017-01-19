@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/layout_item"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_white2gray_selector"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <ImageView
+            android:id="@+id/iv_item_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            style="@style/tv_subhead_style"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:id="@+id/tv_item_caption"
+            style="@style/tv_caption_style"
+            android:layout_width="0dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/common_icon_arrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider_color" />
+
+</LinearLayout>

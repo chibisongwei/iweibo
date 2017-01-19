@@ -1,0 +1,902 @@
+[
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f620.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f620.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f469.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f469.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f601.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f601.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_meigui.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_meigui.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\timeline_icon_retweet.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\timeline_icon_retweet.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f618.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f618.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x2614.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x2614.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_trendbutton_background_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_trendbutton_background_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_doge.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_doge.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_zhutou.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_zhutou.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f62a.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f62a.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f61c.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f61c.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\toolbar_icon_retweet.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\toolbar_icon_retweet.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_dahaqi.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_dahaqi.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_chijing.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_chijing.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_lei.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_lei.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f697.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f697.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f339.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f339.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f628.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f628.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f343.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f343.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_biefanwo.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_biefanwo.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_add_icon_pressed.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_add_icon_pressed.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f385.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f385.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_hehe.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_hehe.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x2600.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x2600.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_xiudada.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_xiudada.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_xiaohaha.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_xiaohaha.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_deyidexiao.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_deyidexiao.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_profile.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_profile.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_aoteman.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_aoteman.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f603.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f603.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navigationbar_more.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\navigationbar_more.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_keai.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_keai.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f4f1.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f4f1.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_discover_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_discover_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f604.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f604.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f380.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f380.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_jiyan.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_jiyan.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_qinqin.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_qinqin.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navigationbar_back.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\navigationbar_back.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_zuohengheng.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_zuohengheng.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navigationbar_icon_radar.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\navigationbar_icon_radar.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_nu.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_nu.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_buxiangshangban.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_buxiangshangban.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x270a.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x270a.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_jiujie.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_jiujie.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chat_from_bg_normal.9.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\chat_from_bg_normal.9.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_kun.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_kun.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f60d.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f60d.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\camera_tag_delete_left.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\camera_tag_delete_left.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_kelian.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_kelian.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_heng.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_heng.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_juhan.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_juhan.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f4a3.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f4a3.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_bengkui.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_bengkui.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_buhaoyisi.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_buhaoyisi.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_mentionbutton_background_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_mentionbutton_background_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_wabishi.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_wabishi.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_mentionbutton_background.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_mentionbutton_background.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f494.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f494.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f431.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f431.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navigationbar_back_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\navigationbar_back_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_qiaoqiao.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_qiaoqiao.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f633.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f633.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f44a.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f44a.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_trendbutton_background.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_trendbutton_background.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f382.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f382.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_yinxian.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_yinxian.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_leifeng.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_leifeng.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_qiuguanzhu.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_qiuguanzhu.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f448.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f448.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_emoticonbutton_background.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_emoticonbutton_background.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_shenshou.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_shenshou.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f50d.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f50d.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f446.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f446.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f341.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f341.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f381.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f381.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_tuzi.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_tuzi.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_quntiweiguan.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_quntiweiguan.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_xixi.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_xixi.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_heixian.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_heixian.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_nanhaier.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_nanhaier.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f630.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f630.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f623.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f623.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_xiangyixiang.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_xiangyixiang.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_haoaio.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_haoaio.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_home.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_home.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f602.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f602.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_baibai.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_baibai.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_kunsile.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_kunsile.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_oye.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_oye.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_leiliumanmian.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_leiliumanmian.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_sikao.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_sikao.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_haixiu.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_haixiu.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_shiwang.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_shiwang.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f31f.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f31f.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_haojiong.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_haojiong.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_xiongmao.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_xiongmao.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_shengbing.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_shengbing.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_dalian.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_dalian.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f613.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f613.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navigationbar_icon_radar_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\navigationbar_icon_radar_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_ku.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_ku.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_toolbar_more_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_toolbar_more_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_tu.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_tu.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_bishi.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_bishi.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chat_to_bg_normal.9.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\chat_to_bg_normal.9.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f61d.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f61d.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_landelini.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_landelini.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_zana.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_zana.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f444.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f444.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_ding.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_ding.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\message_add_background_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\message_add_background_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\toolbar_icon_comment.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\toolbar_icon_comment.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_qian.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_qian.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_feizao.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_feizao.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_youhengheng.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_youhengheng.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f64f.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f64f.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_numa.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_numa.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f33b.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f33b.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f47f.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f47f.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_weiqu.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_weiqu.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f4aa.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f4aa.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x270c.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x270c.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navigationbar_friendattention.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\navigationbar_friendattention.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_tuijian.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_tuijian.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f44c.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f44c.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_beicui.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_beicui.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_lang.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_lang.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_profile_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_profile_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_haha.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_haha.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_holdzhu.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_holdzhu.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_touxiao.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_touxiao.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f60a.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f60a.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x26bd.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x26bd.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f47b.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f47b.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f60f.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f60f.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_ganmao.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_ganmao.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f48e.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f48e.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navigationbar_more_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\navigationbar_more_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_yun.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_yun.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navigationbar_more_disable.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\navigationbar_more_disable.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_message.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_message.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\message_add_background.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\message_add_background.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f637.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f637.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_haobang.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_haobang.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_beishang.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_beishang.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_jiekexun.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_jiekexun.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_qiubite.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_qiubite.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f457.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f457.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\timeline_icon_comment.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\timeline_icon_comment.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_add_icon.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_add_icon.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_message_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_message_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\timeline_icon_unlike.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\timeline_icon_unlike.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_pili.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_pili.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f631.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f631.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_yiwen.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_yiwen.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_zhenjing.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_zhenjing.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f466.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f466.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f467.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f467.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_xiaoku.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_xiaoku.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x2615.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x2615.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_youyali.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_youyali.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navigationbar_friendattention_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\navigationbar_friendattention_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_miao.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_miao.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_haoxihuan.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_haoxihuan.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_guzhang.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_guzhang.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_zhuanfa.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_zhuanfa.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_chanzui.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_chanzui.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_huaxin.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_huaxin.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f559.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f559.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_aini.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_aini.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_shayan.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_shayan.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_shuijiao.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_shuijiao.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f622.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f622.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f44d.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f44d.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f612.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f612.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f37a.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f37a.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f44f.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f44f.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_xuyuan.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_xuyuan.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f614.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f614.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f625.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f625.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_emoticonbutton_background_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_emoticonbutton_background_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_toolbar_picture_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_toolbar_picture_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f44e.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f44e.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_toule.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_toule.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f61e.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f61e.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_zhuakuang.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_zhuakuang.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_toolbar_picture.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_toolbar_picture.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\avatar_vip.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\avatar_vip.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f319.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f319.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\avatar_default.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\avatar_default.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\toolbar_icon_unlike.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\toolbar_icon_unlike.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f449.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f449.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x2764.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x2764.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_bizui.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_bizui.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\logo_bg.9.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\logo_bg.9.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f468.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f468.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_koubishi.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_koubishi.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f61a.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f61a.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f60c.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f60c.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_home_highlighted.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_home_highlighted.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\compose_toolbar_more.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\compose_toolbar_more.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f609.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f609.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f436.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f436.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f621.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f621.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x2601.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x2601.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_xianghumobai.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_xianghumobai.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f616.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f616.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabbar_discover.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\tabbar_discover.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_taikaixin.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_taikaixin.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f632.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f632.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_shuaishuaishou.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_shuaishuaishou.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_feijin.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_feijin.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_xu.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_xu.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_nvhaier.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_nvhaier.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x26a1.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x26a1.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_zuiyou.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_zuiyou.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\lxh_beidian.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\lxh_beidian.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_shuai.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_shuai.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f3e0.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f3e0.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f447.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f447.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\d_han.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\d_han.png"
+    },
+    {
+        "merged": "D:\\studio_project\\Weibo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\emoji_0x1f62d.png",
+        "source": "D:\\studio_project\\Weibo\\app\\src\\main\\res\\mipmap-hdpi\\emoji_0x1f62d.png"
+    }
+]

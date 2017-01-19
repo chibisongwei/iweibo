@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_letter"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="@color/bg_gray"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:id="@+id/tv_letter"
+            style="@style/tv_body_style"
+            android:textColor="@color/text_gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_friend"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_white2gray_selector"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp">
+
+        <CheckBox
+            android:id="@+id/cb_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/checkbox_contact_selector"
+            android:button="@null"
+            android:clickable="true" />
+
+        <ImageView
+            android:id="@+id/iv_friend"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="16dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tv_friend"
+            style="@style/tv_subhead_style"
+            android:layout_marginLeft="16dp" />
+    </LinearLayout>
+
+</LinearLayout>

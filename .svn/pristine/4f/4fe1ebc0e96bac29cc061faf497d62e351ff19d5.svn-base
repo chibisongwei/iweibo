@@ -1,0 +1,11 @@
+package com.willian.weibo.constant;
+
+/**
+ * 常量定义类
+ */
+public class Constant {
+
+    public static final boolean IS_SHOW_LOG = true;
+    // from SD card
+    public static final String SD_CARD_PREFIX_URI = "file:///";
+}

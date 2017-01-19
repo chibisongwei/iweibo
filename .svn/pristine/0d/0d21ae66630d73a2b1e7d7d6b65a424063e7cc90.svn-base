@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.willian.weibo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        name="com.willian.weibo.utils.BaseApplication"
+        android:name="com.android.tools.fd.runtime.BootstrapApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="com.willian.weibo.activity.StartActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 登录界面 -->
+        <activity android:name="com.willian.weibo.activity.LoginActivity" />
+        <!-- 主界面 -->
+        <activity android:name="com.willian.weibo.activity.MainActivity" />
+        <!-- 微博详情界面 -->
+        <activity android:name="com.willian.weibo.activity.StatusDetailActivity" />
+        <!-- 发评论界面 -->
+        <activity android:name="com.willian.weibo.activity.WriteCommentActivity" />
+    </application>
+
+</manifest>

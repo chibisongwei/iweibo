@@ -1,0 +1,113 @@
+package com.willian.weibo.utils;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.willian.weibo.R;
+
+/**
+ * Dialog管理类
+ * 由于需要传入Context参数，所以如果使用单例模式，则容易造成内存泄露
+ */
+public class DialogManager {
+
+    private Context mContext;
+
+    private Dialog mDialog;
+
+    private ImageView mRecordImage;
+
+    private TextView mTimeText;
+
+    private TextView mInfoText;
+
+    public DialogManager(Context context) {
+        this.mContext = context;
+    }
+
+    /**
+     * 初始化Dialog
+     */
+    public void initDialog() {
+        mDialog = new Dialog(mContext, R.style.DialogTheme);
+        View dialogView = View.inflate(mContext, R.layout.msg_dialog, null);
+        mDialog.setContentView(dialogView);
+        mRecordImage = (ImageView) mDialog.findViewById(R.id.iv_record);
+        mTimeText = (TextView) mDialog.findViewById(R.id.tv_record_time);
+        mInfoText = (TextView) mDialog.findViewById(R.id.tv_record_info);
+        mDialog.show();
+    }
+
+    /**
+     * 显示正在录音的Dialog
+     */
+    public void showRecordingDialog() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mRecordImage.setVisibility(View.VISIBLE);
+            mTimeText.setVisibility(View.VISIBLE);
+            mInfoText.setVisibility(View.VISIBLE);
+
+            mRecordImage.setImageResource(R.mipmap.recording_recording_indicator_voice_1);
+            mTimeText.setText("");
+            mInfoText.setText(mContext.getResources().getString(R.string.move_cancel_send));
+        }
+    }
+
+    /**
+     * 显示取消录音的Dialog
+     */
+    public void showCancelDialog() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mRecordImage.setVisibility(View.VISIBLE);
+            mTimeText.setVisibility(View.GONE);
+            mInfoText.setVisibility(View.VISIBLE);
+
+            mRecordImage.setImageResource(R.mipmap.recording_delete_indicator);
+            mInfoText.setText(mContext.getResources().getString(R.string.up_cancel_send));
+        }
+    }
+
+    /**
+     * 显示录音时间太短的Dialog
+     */
+    public void showShortDialog() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mRecordImage.setVisibility(View.VISIBLE);
+            mTimeText.setVisibility(View.GONE);
+            mInfoText.setVisibility(View.VISIBLE);
+
+            mRecordImage.setImageResource(R.mipmap.recording_timer_indicator);
+            mInfoText.setText(mContext.getResources().getString(R.string.talk_too_short));
+        }
+    }
+
+    /**
+     * 显示音量变化的Dialog
+     */
+    public void showVoiceUpdateDialog(int level, float time) {
+        if (mDialog != null && mDialog.isShowing()) {
+            mRecordImage.setVisibility(View.VISIBLE);
+            mTimeText.setVisibility(View.VISIBLE);
+            mInfoText.setVisibility(View.VISIBLE);
+
+            int resId = mContext.getResources().getIdentifier("recording_recording_indicator_voice_" + level, "drawable", mContext.getPackageName());
+            mRecordImage.setImageResource(resId);
+            // 显示录音时长
+            mTimeText.setText("0:"+time);
+            mInfoText.setText(mContext.getResources().getString(R.string.move_cancel_send));
+        }
+    }
+
+    /**
+     * 取消Dialog
+     */
+    public void dimissDialog() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+            mDialog = null;
+        }
+    }
+}

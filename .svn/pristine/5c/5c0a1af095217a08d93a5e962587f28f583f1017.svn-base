@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popover_background">
+
+    <com.willian.weibo.widget.WrapHeighListView
+        android:id="@+id/lv_popup_window"
+        style="@style/lv_item_style"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

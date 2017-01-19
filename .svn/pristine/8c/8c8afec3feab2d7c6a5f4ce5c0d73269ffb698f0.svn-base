@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_title_bar"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_friends"
+            style="@style/lv_item_style" />
+
+        <LinearLayout
+            android:id="@+id/layout_float"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="@color/bg_gray"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp">
+
+            <TextView
+                android:id="@+id/tv_float"
+                style="@style/tv_body_style"
+                android:textColor="@color/text_gray" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

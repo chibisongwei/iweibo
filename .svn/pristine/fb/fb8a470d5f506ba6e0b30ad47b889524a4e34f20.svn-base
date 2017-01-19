@@ -1,0 +1,121 @@
+package com.willian.weibo.activity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.sina.weibo.sdk.exception.WeiboException;
+import com.sina.weibo.sdk.net.RequestListener;
+import com.sina.weibo.sdk.openapi.legacy.FriendshipsAPI;
+import com.sina.weibo.sdk.openapi.models.ErrorInfo;
+import com.sina.weibo.sdk.openapi.models.User;
+import com.sina.weibo.sdk.utils.LogUtil;
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.ContactAdapter;
+import com.willian.weibo.bean.Contact;
+import com.willian.weibo.bean.FriendshipList;
+import com.willian.weibo.sdk.AccessTokenKeeper;
+import com.willian.weibo.sdk.Constants;
+import com.willian.weibo.utils.TitleBarBuilder;
+import com.willian.weibo.widget.WrapHeightListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 联系人
+ */
+public class ContactActivity extends BaseActivity {
+
+    private static final String TAG = "ContactActivity";
+
+    private Oauth2AccessToken mAccessToken;
+
+    private FriendshipsAPI mFriendAPI;
+
+    private WrapHeightListView mListView;
+
+    private ContactAdapter mContactAdapter;
+
+    private List<Contact> mContactList = new ArrayList<Contact>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_contact);
+
+        // 获取当前已保存过的 Token
+        mAccessToken = AccessTokenKeeper.readAccessToken(this);
+        mFriendAPI = new FriendshipsAPI(this, Constants.APP_KEY, mAccessToken);
+
+        initView();
+
+        loadFriends(1);
+    }
+
+    private void initView() {
+        new TitleBarBuilder(this)
+                .setLeftImage(R.drawable.titlebar_back_selector)
+                .setTitleText(getResources().getString(R.string.choose_contact))
+                .setRightButton(getResources().getString(R.string.chat))
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+        mListView = (WrapHeightListView) findViewById(R.id.lv_contact);
+        mContactAdapter = new ContactAdapter(this, mContactList);
+        mListView.setAdapter(mContactAdapter);
+    }
+
+    /**
+     * 加载互相关注的好友信息列表，此接口最多可获得双向关注总量30%的用户
+     */
+    private void loadFriends(final int page) {
+        long uid = Long.parseLong(mAccessToken.getUid());
+        mFriendAPI.bilateral(uid, 50, page, new RequestListener() {
+            @Override
+            public void onComplete(String response) {
+                if (response.startsWith("{\"users\"")) {
+                    // 调用 FriendshipList#parse 解析字符串成关注列表对象
+                    FriendshipList friendships = FriendshipList.parse(response);
+                    if (friendships != null && friendships.total_number > 0) {
+                        if (page == 1) {
+                            mContactList.clear();
+                        }
+                        // 加载更多数据
+                        loadMoreData(friendships);
+                    }
+                } else {
+                    Toast.makeText(ContactActivity.this, response,
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onWeiboException(WeiboException e) {
+                LogUtil.e(TAG, e.getMessage());
+                ErrorInfo info = ErrorInfo.parse(e.getMessage());
+                Toast.makeText(ContactActivity.this, info.toString(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    /**
+     * 加载更多数据
+     *
+     * @param friendships
+     */
+    private void loadMoreData(FriendshipList friendships) {
+        for (User mUser : friendships.userList) {
+            Contact mContact = new Contact();
+            mContact.setHeadUrl(mUser.avatar_large);
+            mContact.setUserName(mUser.name);
+            mContactList.add(mContact);
+        }
+        mContactAdapter.notifyDataSetChanged();
+    }
+}

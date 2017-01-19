@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_chat_type"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popover_background_right"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_launch"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp">
+
+        <ImageView
+            android:id="@+id/iv_item_image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/navigationbar_icon_newchat" />
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            style="@style/tv_subhead_style"
+            android:layout_marginLeft="8dp"
+            android:text="@string/launch_chat"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider_color" />
+
+    <LinearLayout
+        android:id="@+id/layout_private"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp">
+
+        <ImageView
+            android:id="@+id/iv_item_image2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/navigationbar_icon_newchat" />
+
+        <TextView
+            android:id="@+id/tv_item_name2"
+            style="@style/tv_subhead_style"
+            android:layout_marginLeft="8dp"
+            android:text="@string/private_chat"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

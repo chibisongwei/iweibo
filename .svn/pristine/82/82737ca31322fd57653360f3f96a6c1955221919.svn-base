@@ -1,0 +1,196 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <!-- TextView的样式 -->
+    <style name="tv_headline_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">@dimen/text_size_headline</item>
+    </style>
+
+    <style name="tv_title_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">@dimen/text_size_title</item>
+    </style>
+
+    <style name="tv_subhead_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">@dimen/text_size_sub_head</item>
+    </style>
+
+    <style name="tv_body_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+    </style>
+
+    <style name="tv_other_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">@dimen/text_size_other</item>
+    </style>
+
+    <style name="tv_caption_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+    </style>
+
+    <!-- ListView的样式 -->
+    <style name="lv_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:cacheColorHint">@color/transparent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">8dp</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
+    <style name="lv_comment_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:cacheColorHint">@color/transparent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
+    <style name="lv_item_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:cacheColorHint">@color/transparent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0.5dp</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
+    <style name="lv_msg_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:cacheColorHint">@color/transparent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
+    <style name="lv_folder_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:cacheColorHint">@color/transparent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">4dp</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="lv_group_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:cacheColorHint">@color/transparent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">4dp</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:fadingEdge">none</item>
+    </style>
+    <!-- 分隔线的样式 -->
+    <style name="vertical_divider_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_size</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
+    <style name="horizontal_divider_style">
+        <item name="android:layout_width">@dimen/divider_size</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
+    <!-- RadioButton的样式 -->
+    <style name="rb_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@drawable/text_color_selector</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="rb_detail_tab_style">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@drawable/text_gray2black_selector</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/status_detail_tab_selector</item>
+    </style>
+
+    <style name="rb_emotion_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:textSize">@dimen/text_size_other</item>
+        <item name="android:textColor">@drawable/text_gray2black_selector</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/tab_emotion_bg_selector</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- GridView的样式 -->
+    <style name="gv_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:numColumns">3</item>
+        <item name="android:horizontalSpacing">4dp</item>
+        <item name="android:verticalSpacing">4dp</item>
+        <item name="android:cacheColorHint">@color/transparent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+
+    <style name="gv_album_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:numColumns">3</item>
+        <item name="android:horizontalSpacing">4dp</item>
+        <item name="android:verticalSpacing">4dp</item>
+        <item name="android:cacheColorHint">@color/transparent</item>
+        <item name="android:listSelector">@color/transparent</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
+    <!-- PopupWindow的样式 -->
+    <style name="popup_window_style">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+</resources>

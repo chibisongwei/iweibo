@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:drawable="@drawable/compose_photo_preview_highlighted" />
+    <item android:state_selected="true" android:drawable="@drawable/compose_photo_preview_highlighted" />
+    <item android:state_pressed="true" android:drawable="@drawable/compose_photo_preview_highlighted" />
+    <item android:state_enabled="false" android:drawable="@drawable/compose_photo_preview_disable" />
+    <item android:drawable="@drawable/compose_photo_preview_seleted" />
+</selector>

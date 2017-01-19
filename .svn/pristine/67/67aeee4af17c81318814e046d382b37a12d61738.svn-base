@@ -1,0 +1,141 @@
+package com.willian.weibo.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.FrameLayout;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.willian.weibo.R;
+import com.willian.weibo.bean.AlbumPhoto;
+import com.willian.weibo.utils.ToastUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 相册图片的适配器
+ */
+public class AlbumAdapter extends BaseAdapter {
+
+    private Context mContext;
+    private List<AlbumPhoto> mPhotoList;
+    private LayoutInflater mInflater;
+    private ImageLoader mImageLoader;
+    private List<AlbumPhoto> mSelectedPhotos = new ArrayList<AlbumPhoto>();
+
+    public AlbumAdapter(Context mContext, List<AlbumPhoto> mPhotoList) {
+        this.mPhotoList = mPhotoList;
+        this.mContext = mContext;
+        mInflater = LayoutInflater.from(mContext);
+        mImageLoader = ImageLoader.getInstance();
+    }
+
+    public List<AlbumPhoto> getSelectedPhotos() {
+        return mSelectedPhotos;
+    }
+
+    @Override
+    public int getCount() {
+        return mPhotoList.size() + 1;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return mPhotoList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final ViewHolder viewHolder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.gridview_item_album_photo, null);
+            viewHolder = new ViewHolder();
+            viewHolder.albumPhoto = (ImageView) convertView.findViewById(R.id.iv_album_photo);
+            viewHolder.mHideView = convertView.findViewById(R.id.view_hide);
+            viewHolder.checkBox = (CheckBox) convertView.findViewById(R.id.cb_choose);
+            // 第二次绘制ListView时，直接从getTag()中取出
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        final Button nextStep = (Button) parent.getRootView().findViewById(R.id.btn_right);
+
+        GridView mGridView = (GridView) parent;
+        // 获取item之间的水平间距
+        int horizontalSpacing = mGridView.getHorizontalSpacing();
+        // 获取列数
+        int numColums = mGridView.getNumColumns();
+        // 计算每个item的宽度
+        int itemWidth = (mGridView.getWidth() - (numColums - 1) * horizontalSpacing
+                - mGridView.getPaddingLeft() - mGridView.getPaddingRight()) / numColums;
+        // 设置ImageView的宽度和高度
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(itemWidth, itemWidth);
+        viewHolder.albumPhoto.setLayoutParams(params);
+
+        if (position == 0) {
+            viewHolder.albumPhoto.setImageResource(R.drawable.compose_photograph_selector);
+            viewHolder.checkBox.setVisibility(View.GONE);
+        } else {
+            viewHolder.checkBox.setVisibility(View.VISIBLE);
+            final AlbumPhoto mStatusPhoto = mPhotoList.get(position-1);
+
+            mImageLoader.displayImage(mStatusPhoto.getPhotoPath(), viewHolder.albumPhoto);
+            // checkbox选中事件处理
+            viewHolder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    if (isChecked) {
+                        viewHolder.mHideView.setVisibility(View.VISIBLE);
+                        if (mSelectedPhotos.size() < 9) {
+                            mSelectedPhotos.add(mStatusPhoto);
+                            nextStep.setEnabled(true);
+                            nextStep.setText(mContext.getResources().getString(R.string.next_step) + "(" + mSelectedPhotos.size() + ")");
+                            nextStep.setBackgroundResource(R.drawable.common_button_orange);
+                        } else {
+                            viewHolder.checkBox.setChecked(false);
+                            ToastUtil.showToast(mContext, "最多选择9张照片", Toast.LENGTH_SHORT);
+                        }
+                    } else {
+                        viewHolder.mHideView.setVisibility(View.GONE);
+                        mSelectedPhotos.remove(mStatusPhoto);
+                        if (mSelectedPhotos.size() > 0) {
+                            nextStep.setEnabled(true);
+                            nextStep.setText(mContext.getResources().getString(R.string.next_step) + "(" + mSelectedPhotos.size() + ")");
+                            nextStep.setBackgroundResource(R.drawable.common_button_orange);
+                        } else {
+                            nextStep.setEnabled(false);
+                            nextStep.setText(mContext.getResources().getString(R.string.next_step));
+                            nextStep.setBackgroundResource(R.drawable.common_button_white_disable);
+                        }
+
+                    }
+                }
+            });
+        }
+
+        return convertView;
+    }
+
+    public static class ViewHolder {
+        public ImageView albumPhoto;
+        public View mHideView;
+        public CheckBox checkBox;
+    }
+}

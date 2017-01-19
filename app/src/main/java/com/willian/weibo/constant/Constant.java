@@ -1,0 +1,21 @@
+package com.willian.weibo.constant;
+
+/**
+ * 常量定义类
+ */
+public class Constant {
+    // 是否打印日志
+    public static final boolean IS_SHOW_LOG = true;
+    // from SD card
+    public static final String SD_CARD_PREFIX_URI = "file://";
+    // 相机拍摄的图片存储目录
+    public static final String CAMERA_DIR = "DCIM/Camera/";
+    // 中等质量图片url前缀
+    public static final String BMIDDLE_URL = "http://ww3.sinaimg.cn/bmiddle/";
+    // 原质量图片url前缀
+    public static final String ORIGINAL_URL = "http://ww3.sinaimg.cn/large/";
+    // 保存图片文件夹
+    public static final String SAVE_PICTURE_DIR = "/weibo/picture";
+    // 保存音频文件夹
+    public static final String SAVE_AUDIO_DIR = "/weibo/audio";
+}

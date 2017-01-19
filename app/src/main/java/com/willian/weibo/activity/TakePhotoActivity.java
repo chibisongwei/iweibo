@@ -1,0 +1,244 @@
+package com.willian.weibo.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.hardware.Camera;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.willian.weibo.R;
+import com.willian.weibo.constant.Constant;
+import com.willian.weibo.utils.ImageUtil;
+import com.willian.weibo.utils.LoggerUtil;
+import com.willian.weibo.utils.TitleBarBuilder;
+import com.willian.weibo.utils.ToastUtil;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 调用系统相机预览拍照
+ */
+public class TakePhotoActivity extends BaseActivity {
+
+    private static final String TAG = "TakePhotoActivity";
+
+    private SurfaceView mSurfaceView;
+
+    private ImageButton mImageButton;
+
+    private SurfaceHolder mHolder;
+
+    private Camera mCamera;
+
+    private List<String> selectedPhotos = new ArrayList<String>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_take_photo);
+        // 获取用户选择的图片
+        selectedPhotos = (List) getIntent().getSerializableExtra("newPhotos");
+        initView();
+        // 初始化相机预览
+        initCamera();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LoggerUtil.showLog(TAG, "=========onResume========", 6);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+            mCamera = Camera.open(0);
+        } else {
+            mCamera = Camera.open();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LoggerUtil.showLog(TAG, "=========onPause========", 6);
+        if (mCamera != null) {
+            mCamera.release();
+            mCamera = null;
+        }
+    }
+
+    /**
+     * 初始化
+     */
+    private void initView() {
+        new TitleBarBuilder(this)
+                .setLeftImage(R.drawable.camera_close_selector)
+                .setTitleText(getResources().getString(R.string.status_camera))
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+
+        mSurfaceView = (SurfaceView) findViewById(R.id.sv_photo);
+        mImageButton = (ImageButton) findViewById(R.id.iv_take_photo);
+        // 点击拍照
+        mImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mCamera != null) {
+                    mCamera.takePicture(mShutterCallBack, null, mPictureCallBack);
+                }
+            }
+        });
+    }
+
+
+    /**
+     * 相机预览设置
+     */
+    private void initCamera() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mHolder = mSurfaceView.getHolder();
+                mHolder.addCallback(new SurfaceHolder.Callback() {
+                    @Override
+                    public void surfaceCreated(SurfaceHolder holder) {
+                        try {
+                            if (mCamera != null) {
+                                // 预览方向顺时针旋转90度
+                                mCamera.setDisplayOrientation(90);
+                                mCamera.setPreviewDisplay(mHolder);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+                        if (mCamera != null) {
+                            Camera.Parameters parameters = mCamera.getParameters();
+                            // 设置拍摄的照片尺寸
+                            Camera.Size size = getBestSize(parameters.getSupportedPictureSizes(), width, height);
+                            parameters.setPictureSize(size.width, size.height);
+                            mCamera.setParameters(parameters);
+                            try {
+                                mCamera.startPreview();
+                            } catch (Exception e) {
+                                mCamera.release();
+                                mCamera = null;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void surfaceDestroyed(SurfaceHolder holder) {
+                        if (mCamera != null) {
+                            mCamera.stopPreview();
+                        }
+                    }
+                });
+            }
+        }).start();
+    }
+
+    /**
+     * 获取照片尺寸大小
+     *
+     * @param sizeList
+     * @param width
+     * @param height
+     * @return
+     */
+    private Camera.Size getBestSize(List<Camera.Size> sizeList, int width, int height) {
+        Camera.Size bestSize = sizeList.get(0);
+        int largeArea = bestSize.width * bestSize.height;
+        for (Camera.Size mSize : sizeList) {
+            int area = mSize.width * mSize.height;
+            if (area > largeArea) {
+                bestSize = mSize;
+                largeArea = area;
+            }
+        }
+        return bestSize;
+    }
+
+    private Camera.ShutterCallback mShutterCallBack = new Camera.ShutterCallback() {
+        @Override
+        public void onShutter() {
+            // 做一些拍照前的初始化工作，比如显示一个Dialog进度条
+        }
+    };
+
+    /**
+     * 保存图片
+     */
+    private Camera.PictureCallback mPictureCallBack = new Camera.PictureCallback() {
+        @Override
+        public void onPictureTaken(byte[] data, Camera camera) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+            // 获取竖直方向的照片
+            bitmap = ImageUtil.rotateBitmap(bitmap, 90);
+            // 保存图片到SD卡
+            saveImageToGallery(TakePhotoActivity.this, bitmap);
+        }
+    };
+
+    /**
+     * 保存图片到指定目录
+     *
+     * @param context
+     * @param bmp
+     */
+    private void saveImageToGallery(Context context, Bitmap bmp) {
+        // 未安装SD卡时不做保存
+        String storageState = Environment.getExternalStorageState();
+        if (!storageState.equals(Environment.MEDIA_MOUNTED)) {
+            ToastUtil.showToast(context, getResources().getString(R.string.no_sdcard), Toast.LENGTH_SHORT);
+            return;
+        }
+        File appDir = new File(Environment.getExternalStorageDirectory(), Constant.CAMERA_DIR);
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
+        String fileName = System.currentTimeMillis() + ".jpg";
+        File file = new File(appDir, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            // 无压缩保存
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 最后通知图库更新
+        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(Constant.SD_CARD_PREFIX_URI + file.getAbsoluteFile())));
+        // Activity跳转
+        String photoPath = Constant.SD_CARD_PREFIX_URI + Environment.getExternalStorageDirectory() + "/" + Constant.CAMERA_DIR + fileName;
+        // 将相机拍摄的照片加入到selectedPhotos中
+        selectedPhotos.add(photoPath);
+        Intent mIntent = new Intent(TakePhotoActivity.this, DisplayPhotoActivity.class);
+        mIntent.putExtra("photoPath", photoPath);
+        mIntent.putExtra("newPhotos", (Serializable) selectedPhotos);
+        startActivity(mIntent);
+    }
+}

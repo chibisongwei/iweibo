@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_white"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:paddingLeft="16dp">
+
+        <ImageView
+            android:id="@+id/iv_comment_avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv_comment_verified"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignBottom="@id/iv_comment_avatar"
+            android:layout_alignRight="@id/iv_comment_avatar"
+            android:src="@mipmap/avatar_vip"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tv_comment_user"
+            style="@style/tv_caption_style"
+            android:textColor="@color/dark_orange" />
+
+        <TextView
+            android:id="@+id/tv_comment_time"
+            style="@style/tv_caption_style"
+            android:layout_below="@id/tv_comment_user"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tv_comment_content"
+            style="@style/tv_body_style"
+            android:layout_below="@id/tv_comment_time"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

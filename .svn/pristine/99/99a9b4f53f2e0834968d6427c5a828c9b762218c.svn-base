@@ -1,0 +1,179 @@
+package com.willian.weibo.activity;
+
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.sina.weibo.sdk.exception.WeiboException;
+import com.sina.weibo.sdk.net.RequestListener;
+import com.sina.weibo.sdk.openapi.legacy.StatusesAPI;
+import com.sina.weibo.sdk.openapi.models.ErrorInfo;
+import com.sina.weibo.sdk.openapi.models.Status;
+import com.sina.weibo.sdk.openapi.models.StatusList;
+import com.sina.weibo.sdk.utils.LogUtil;
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.AtStatusAdapter;
+import com.willian.weibo.sdk.AccessTokenKeeper;
+import com.willian.weibo.sdk.Constants;
+import com.willian.weibo.utils.TitleBarBuilder;
+import com.willian.weibo.utils.ToastUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * At我的微博
+ */
+public class AtStatusActivity extends BaseActivity {
+
+    private static final String TAG = "AtStatusActivity";
+
+    /**
+     * 当前 Token 信息
+     */
+    private Oauth2AccessToken mAccessToken;
+    /**
+     * 用于获取微博信息流等操作的API
+     */
+    private StatusesAPI mStatusesAPI;
+
+    private int curPage = 1;
+
+    private List<Status> mStatusList = new ArrayList<Status>();
+
+    private AtStatusAdapter mStatusAdapter;
+
+    private PullToRefreshListView mListView;
+
+    private View footerView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_at_status);
+
+        // 获取当前已保存过的 Token
+        mAccessToken = AccessTokenKeeper.readAccessToken(this);
+        // 对statusAPI实例化
+        mStatusesAPI = new StatusesAPI(this, Constants.APP_KEY, mAccessToken);
+
+        initView();
+        // 默认获取50条
+        loadAtStatus(1);
+    }
+
+    private void initView() {
+        new TitleBarBuilder(this)
+                .setTitleText(getResources().getString(R.string.all_status))
+                .setArrowImage(R.mipmap.navigationbar_arrow_down)
+                .setLeftImage(R.drawable.titlebar_back_selector)
+                .setRightText(getResources().getString(R.string.setting))
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                        overridePendingTransition(R.anim.slide_out_from_right, R.anim.slide_in_from_left);
+                    }
+                })
+                .setRightOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ToastUtil.showToast(AtStatusActivity.this, "Set", Toast.LENGTH_SHORT);
+                    }
+                });
+
+
+        footerView = View.inflate(this, R.layout.listview_foot, null);
+        mListView = (PullToRefreshListView) findViewById(R.id.lv_at_status);
+        mStatusAdapter = new AtStatusAdapter(this, mStatusList);
+        mListView.setAdapter(mStatusAdapter);
+
+        mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                loadAtStatus(1);
+            }
+        });
+        mListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
+            @Override
+            public void onLastItemVisible() {
+                ListView listView = mListView.getRefreshableView();
+                if (listView.getFooterViewsCount() > 1) {
+                    loadAtStatus(curPage + 1);
+                }
+            }
+        });
+    }
+
+    private void loadAtStatus(final int page) {
+        mStatusesAPI.mentions(0L, 0L, 50, page, 0, 0, 0, false, new RequestListener() {
+            @Override
+            public void onComplete(String response) {
+                if (!TextUtils.isEmpty(response)) {
+                    LogUtil.i(TAG, response);
+                    // 调用 StatusList#parse 解析字符串成微博列表对象
+                    StatusList statuses = StatusList.parse(response);
+                    if (statuses != null && statuses.total_number > 0) {
+                        if (page == 1) {
+                            mStatusList.clear();
+                        }
+                        curPage = page;
+                        // 加载更多数据
+                        if(statuses.statusList != null){
+                            loadMoreData(statuses);
+                        }else{
+                            removeFootView(mListView, footerView);
+                        }
+                    } else {
+                        Toast.makeText(AtStatusActivity.this, response,
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onWeiboException(WeiboException e) {
+                LogUtil.e(TAG, e.getMessage());
+                ErrorInfo info = ErrorInfo.parse(e.getMessage());
+                Toast.makeText(AtStatusActivity.this, info.toString(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void loadMoreData(StatusList statuses) {
+        for (Status mStatus : statuses.statusList) {
+            if (!mStatusList.contains(mStatus)) {
+                mStatusList.add(mStatus);
+            }
+        }
+        mStatusAdapter.notifyDataSetChanged();
+
+        if (mStatusList.size() < statuses.total_number) {
+            addFootView(mListView, footerView);
+        } else {
+            removeFootView(mListView, footerView);
+        }
+
+        mListView.onRefreshComplete();
+    }
+
+    private void addFootView(PullToRefreshListView pullListView, View footView) {
+        ListView listView = pullListView.getRefreshableView();
+        if (listView.getFooterViewsCount() == 1) {
+            listView.addFooterView(footView);
+        }
+    }
+
+    private void removeFootView(PullToRefreshListView pullListView, View footView) {
+        ListView listView = pullListView.getRefreshableView();
+        if (listView.getFooterViewsCount() > 1) {
+            listView.removeFooterView(footView);
+        }
+    }
+}

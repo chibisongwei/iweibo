@@ -1,0 +1,49 @@
+package com.willian.weibo.activity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.willian.weibo.R;
+import com.willian.weibo.utils.TitleBarBuilder;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
+
+/**
+ * 显示相册单张图片
+ */
+public class ImageShowActivity extends BaseActivity {
+
+    private PhotoViewAttacher mAttacher;
+
+    private ImageView mImageView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_image_show);
+        // 获取图片的显示路径
+        String imageUrl = getIntent().getStringExtra("imageUrl");
+
+        initView();
+        // 展示图片
+        mImageLoader.displayImage(imageUrl, mImageView);
+        mAttacher = new PhotoViewAttacher(mImageView);
+        mAttacher.update();
+    }
+
+    private void initView() {
+        new TitleBarBuilder(this)
+                .setLeftImage(R.drawable.titlebar_back_selector)
+                .setRightButton(getResources().getString(R.string.next_step))
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                        overridePendingTransition(R.anim.slide_out_from_right, R.anim.slide_in_from_left);
+                    }
+                });
+
+        mImageView = (ImageView) findViewById(R.id.iv_show);
+    }
+}

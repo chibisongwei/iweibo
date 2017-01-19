@@ -1,0 +1,180 @@
+package com.willian.weibo.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.willian.weibo.R;
+import com.willian.weibo.bean.ChatItem;
+import com.willian.weibo.bean.Recorder;
+import com.willian.weibo.utils.DisplayUtils;
+import com.willian.weibo.utils.ImageOptionHelper;
+
+import java.util.List;
+
+/**
+ * 聊天信息适配器
+ */
+public class ChatAdapter extends BaseAdapter {
+
+    private static final int VIEW_TYPE_LEFT = 0;
+    private static final int VIEW_TYPE_RIGHT = 1;
+    private static final int VIEW_TYPE_TOTAL = 2;
+
+    private Context mContext;
+    private List<ChatItem> chatList;
+    private ImageLoader mImageLoader;
+    private LayoutInflater mInflater;
+    private String avatarUrl;
+
+    public ChatAdapter(Context mContext, List<ChatItem> mList) {
+        this.chatList = mList;
+        this.mContext = mContext;
+        this.mImageLoader = ImageLoader.getInstance();
+        this.mInflater = LayoutInflater.from(mContext);
+    }
+
+    public void setAvatarUrl(String url) {
+        this.avatarUrl = url;
+    }
+
+    @Override
+    public int getCount() {
+        return chatList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return chatList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        ChatItem chatItem = chatList.get(position);
+        if (chatItem.isFrom()) {
+            // 发送
+            return VIEW_TYPE_RIGHT;
+        } else {
+            // 接收
+            return VIEW_TYPE_LEFT;
+        }
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return VIEW_TYPE_TOTAL;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        RightViewHolder rightViewHolder = null;
+        LeftViewHolder leftViewHolder = null;
+        int viewType = getItemViewType(position);
+        if (convertView == null) {
+            switch (viewType) {
+                case VIEW_TYPE_LEFT:
+                    convertView = mInflater.inflate(R.layout.listview_chat_left_item, null);
+                    leftViewHolder = new LeftViewHolder();
+                    leftViewHolder.leftChatTime = (TextView) convertView.findViewById(R.id.tv_chat_time);
+                    leftViewHolder.leftUserAvatar = (ImageView) convertView.findViewById(R.id.iv_left_avatar);
+                    leftViewHolder.leftChatMsg = (TextView) convertView.findViewById(R.id.tv_left_msg);
+                    // 第二次绘制ListView时，直接从getTag()中取出
+                    convertView.setTag(leftViewHolder);
+                    break;
+                case VIEW_TYPE_RIGHT:
+                    convertView = mInflater.inflate(R.layout.listview_chat_right_item, null);
+                    rightViewHolder = new RightViewHolder();
+                    rightViewHolder.chatTime = (TextView) convertView.findViewById(R.id.tv_chat_time);
+                    rightViewHolder.avatarImage = (ImageView) convertView.findViewById(R.id.iv_avatar_icon);
+                    rightViewHolder.chatMsg = (TextView) convertView.findViewById(R.id.tv_chat_msg);
+                    rightViewHolder.voiceLayout = (RelativeLayout) convertView.findViewById(R.id.layout_chat_voice);
+                    rightViewHolder.voiceTime = (TextView) convertView.findViewById(R.id.tv_voice_time);
+                    // 第二次绘制ListView时，直接从getTag()中取出
+                    convertView.setTag(rightViewHolder);
+                    break;
+            }
+
+        } else {
+            switch (viewType) {
+                case VIEW_TYPE_LEFT:
+                    leftViewHolder = (LeftViewHolder) convertView.getTag();
+                    break;
+                case VIEW_TYPE_RIGHT:
+                    rightViewHolder = (RightViewHolder) convertView.getTag();
+                    break;
+            }
+        }
+
+        ChatItem mChat = (ChatItem) getItem(position);
+        switch (viewType) {
+            case VIEW_TYPE_LEFT:
+                String toMsg = mChat.getInputContent();
+                leftViewHolder.leftChatMsg.setText(toMsg);
+                break;
+            case VIEW_TYPE_RIGHT:
+                // 显示用户头像
+                mImageLoader.displayImage(avatarUrl, rightViewHolder.avatarImage, ImageOptionHelper.getAvatarOptions());
+
+                int chatType = mChat.getChatType();
+                if (chatType == 0) {
+                    rightViewHolder.voiceLayout.setVisibility(View.GONE);
+                    rightViewHolder.chatMsg.setVisibility(View.VISIBLE);
+
+                    rightViewHolder.chatMsg.setText(mChat.getInputContent());
+                } else if (chatType == 1) {
+                    rightViewHolder.chatMsg.setVisibility(View.GONE);
+                    rightViewHolder.voiceLayout.setVisibility(View.VISIBLE);
+                    // 发送的语音
+                    Recorder mRecorder = mChat.getRecorder();
+                    float time = mRecorder.getTime();
+                    rightViewHolder.voiceTime.setText(Math.round(time) + "\"");
+                    // 最小宽度
+                    int minItemWidth = (int) (DisplayUtils.getScreenWidthPixels(mContext) * 0.15f);
+                    // 最大宽度
+                    int maxItemWidth = (int) (DisplayUtils.getScreenWidthPixels(mContext) * 0.8f);
+                    // 动态设置voiceLayout布局的宽度
+                    ViewGroup.LayoutParams layoutParams = rightViewHolder.voiceLayout.getLayoutParams();
+                    layoutParams.width = (int) (minItemWidth + (maxItemWidth / 60f * time));
+                }
+                rightViewHolder.chatTime.setText(mChat.getChatTime());
+                break;
+        }
+
+        return convertView;
+    }
+
+    /**
+     * 添加新的Item，并更新适配器
+     *
+     * @param chat
+     */
+    public void addItem(ChatItem chat) {
+        chatList.add(chat);
+        notifyDataSetChanged();
+    }
+
+    public static class RightViewHolder {
+        public TextView chatTime;
+        public ImageView avatarImage;
+        public RelativeLayout voiceLayout;
+        public TextView voiceTime;
+        public TextView chatMsg;
+    }
+
+    public static class LeftViewHolder {
+        public TextView leftChatTime;
+        public ImageView leftUserAvatar;
+        public TextView leftChatMsg;
+    }
+}

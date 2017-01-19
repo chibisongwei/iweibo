@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Weibo</string>
+
+    <string name="auth_login">授权登录</string>
+    <string name="weibosdk_demo_toast_auth_success">授权成功</string>
+    <string name="weibosdk_demo_toast_auth_failed">授权失败</string>
+    <string name="weibosdk_demo_toast_auth_canceled">取消授权</string>
+
+    <string name="tab_home">首页</string>
+    <string name="tab_message">消息</string>
+    <string name="tab_search">搜索</string>
+    <string name="tab_user">我</string>
+
+    <string name="weibo_from">来自</string>
+    <string name="retweet">转发</string>
+    <string name="comment">评论</string>
+    <string name="attitude">赞</string>
+
+    <string name="load_more">加载更多</string>
+
+    <string name="weibo_detail">微博正文</string>
+    <string name="cancel">取消</string>
+    <string name="send_weibo">发微博</string>
+    <string name="send_comment">发评论</string>
+    <string name="send">发送</string>
+    <string name="comment_not_null">评论不能为空</string>
+    <string name="hint_text">分享新鲜事...</string>
+    <string name="hint_text_comment">写评论...</string>
+
+    <string name="album">相册</string>
+    <string name="next_step">下一步</string>
+    <string name="no_more_than_nine">最多选择9张照片</string>
+    <string name="preview">预览</string>
+    <string name="original">原图</string>
+
+    <string name="add_friend">添加好友</string>
+    <string name="setting">设置</string>
+    <string name="weibo">微博</string>
+    <string name="follow">关注</string>
+    <string name="fans">粉丝</string>
+    <string name="profile">简介:</string>
+    <string name="profile_null">暂无介绍</string>
+
+    <string name="new_friend">新的好友</string>
+    <string name="new_task">新手任务</string>
+    <string name="my_album">我的相册</string>
+    <string name="my_attitude">我的赞</string>
+    <string name="weibo_pay">微博支付</string>
+    <string name="weibo_sport">微博运动</string>
+    <string name="draft">草稿箱</string>
+    <string name="more">更多</string>
+
+    <string name="new_task_caption">完成任务，抽取大奖</string>
+    <string name="weibo_pay_caption">积分好礼换不停</string>
+    <string name="weibo_sport_caption">奔跑2016搬到这里啦</string>
+    <string name="more_caption">数据中心、点评、收藏</string>
+
+    <string name="save">保存</string>
+    <string name="status_not_null">微博内容不能为空</string>
+    <string name="lately_emoji">最近</string>
+    <string name="default_emoji">默认</string>
+    <string name="emoji">Emoji</string>
+    <string name="lxh_emoji">浪小花</string>
+
+    <string name="find_group">发现群</string>
+    <string name="all_status">全部微博</string>
+    <string name="original_status">原创微博</string>
+    <string name="picture_status">图片微博</string>
+    <string name="repost_status">转发微博</string>
+    <string name="repost_status_hint">说说分享心得...</string>
+    <string name="at_mine">\@我的</string>
+    
+    <string name="camera_film">相机胶卷</string>
+</resources>

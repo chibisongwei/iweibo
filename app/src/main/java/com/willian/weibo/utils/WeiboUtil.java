@@ -1,0 +1,26 @@
+package com.willian.weibo.utils;
+
+/**
+ * 微博工具类
+ */
+public class WeiboUtil {
+
+    /**
+     * 大于1W的数字，只显示万位数
+     *
+     * @param count
+     * @return
+     */
+    public static String getDisplayCount(int count) {
+
+        String displayCount;
+
+        if (count >= 10000) {
+            String countStr = String.valueOf(count);
+            displayCount = countStr.substring(0, countStr.length() - 4) + "万";
+        } else {
+            displayCount = count + "";
+        }
+        return displayCount;
+    }
+}

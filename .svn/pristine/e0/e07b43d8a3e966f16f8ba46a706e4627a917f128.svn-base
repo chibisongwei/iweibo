@@ -1,0 +1,288 @@
+package com.willian.weibo.activity;
+
+import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.ChatAdapter;
+import com.willian.weibo.bean.ChatItem;
+import com.willian.weibo.bean.Contact;
+import com.willian.weibo.bean.Recorder;
+import com.willian.weibo.utils.MediaManager;
+import com.willian.weibo.utils.TitleBarBuilder;
+import com.willian.weibo.widget.VoiceButton;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * 聊天界面
+ */
+public class ChatActivity extends BaseActivity implements View.OnClickListener {
+
+    private static final String TAG = "ChatActivity";
+    // 标题栏名称
+    private String titleName;
+
+    private ListView mListView;
+
+    private ChatAdapter mAdatper;
+
+    private List<ChatItem> mChatList = new ArrayList<ChatItem>();
+
+    private ImageView mTypeImage;
+
+    private EditText inputText;
+
+    private VoiceButton voiceButton;
+
+    private ImageView addImage;
+
+    private Button sendButton;
+    // 聊天类型的默认图标为语音
+    private boolean isVoice = true;
+
+    private View mAnimView;
+
+    private MediaManager mMediaManager;
+
+    private int itemPosition;
+
+    private InputMethodManager inputMethodManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
+        // 启动activity时不自动弹出软键盘
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        // 获取联系人
+        List<Contact> selectedContact = (List) getIntent().getSerializableExtra("selectedContact");
+        if (selectedContact.size() == 1) {
+            Contact mContact = selectedContact.get(0);
+            // 设置标题栏名称
+            titleName = mContact.getUserName();
+        } else {
+            // 设置标题栏名称
+            titleName = getResources().getString(R.string.group_chat) + "(" + selectedContact.size() + ")";
+        }
+
+        mMediaManager = MediaManager.getInstance();
+
+        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        initView();
+
+        handleEvent();
+    }
+
+    private void initView() {
+        new TitleBarBuilder(this)
+                .setLeftImage(R.drawable.titlebar_back_selector)
+                .setRightText(getResources().getString(R.string.setting))
+                .setTitleText(titleName)
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                        overridePendingTransition(R.anim.slide_out_from_right, R.anim.slide_in_from_left);
+                    }
+                }).build();
+
+        mListView = (ListView) findViewById(R.id.lv_chat);
+        mAdatper = new ChatAdapter(this, mChatList);
+        // 设置语音发送者的头像
+        mAdatper.setAvatarUrl(mApplication.currentUser.avatar_large);
+        mListView.setAdapter(mAdatper);
+
+        mTypeImage = (ImageView) findViewById(R.id.iv_chat_type);
+        inputText = (EditText) findViewById(R.id.et_chat_content);
+        voiceButton = (VoiceButton) findViewById(R.id.btn_send_voice);
+        addImage = (ImageView) findViewById(R.id.iv_add);
+        sendButton = (Button) findViewById(R.id.btn_send);
+    }
+
+    private void handleEvent() {
+        mTypeImage.setOnClickListener(this);
+        sendButton.setOnClickListener(this);
+        // 监听文本输入框
+        inputText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // 输入文本内容后，显示发送按钮
+                int len = s.length();
+                if (len > 0) {
+                    addImage.setVisibility(View.GONE);
+                    sendButton.setVisibility(View.VISIBLE);
+                } else {
+                    addImage.setVisibility(View.VISIBLE);
+                    sendButton.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        voiceButton.setOnAudioFinishedListener(new VoiceButton.OnAudioFinishedListener() {
+            @Override
+            public void onFinish(float audioTime, String filePath) {
+                Recorder mRecorder = new Recorder(audioTime, filePath);
+                ChatItem mChat = new ChatItem();
+                mChat.setChatType(1);
+                mChat.setChatTime(getCurTime());
+                mChat.setRecorder(mRecorder);
+                mAdatper.addItem(mChat);
+                mListView.setSelection(mAdatper.getCount() - 1);
+            }
+        });
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ChatItem mChat = mChatList.get(position);
+                int chatType = mChat.getChatType();
+                // 如果发送的是语音，则点击后播放
+                if (chatType == 1) {
+                    Recorder mRecorder = mChat.getRecorder();
+                    // 如果点击的是同一个Item
+                    if (itemPosition == position) {
+                        // 如果已经在播放音频，则结束播放;
+                        if (mAnimView != null) {
+                            mAnimView.setBackgroundResource(R.mipmap.messages_audio_animation_white_from3);
+                            mAnimView = null;
+                            mMediaManager.releaseVoice();
+                        } else {
+                            // 播放语音动画
+                            mAnimView = view.findViewById(R.id.iv_chat_voice);
+                            mAnimView.setBackgroundResource(R.drawable.play_audio);
+                            AnimationDrawable anim = (AnimationDrawable) mAnimView.getBackground();
+                            anim.start();
+                            // 播放音频
+                            mMediaManager.playVoice(mRecorder.getFilePath(), new MediaPlayer.OnCompletionListener() {
+                                @Override
+                                public void onCompletion(MediaPlayer mp) {
+                                    mAnimView.setBackgroundResource(R.mipmap.messages_audio_animation_white_from3);
+                                }
+                            });
+                        }
+                    } else {
+                        // 点击的是不同的Item
+                        if (mAnimView != null) {
+                            mAnimView.setBackgroundResource(R.mipmap.messages_audio_animation_white_from3);
+                            mAnimView = null;
+                        }
+                        // 播放语音动画
+                        mAnimView = view.findViewById(R.id.iv_chat_voice);
+                        mAnimView.setBackgroundResource(R.drawable.play_audio);
+                        AnimationDrawable anim = (AnimationDrawable) mAnimView.getBackground();
+                        anim.start();
+                        // 播放音频
+                        mMediaManager.playVoice(mRecorder.getFilePath(), new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                mAnimView.setBackgroundResource(R.mipmap.messages_audio_animation_white_from3);
+                            }
+                        });
+                    }
+                    itemPosition = position;
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_chat_type:
+                if (isVoice) {
+                    // 隐藏软键盘
+                    inputMethodManager.hideSoftInputFromWindow(inputText.getWindowToken(), 0);
+                    // 点击后，图标切换为键盘Icon
+                    mTypeImage.setImageResource(R.drawable.msg_keyboard_selector);
+                    // 隐藏输入框
+                    inputText.setVisibility(View.GONE);
+                    // 显示语音发送按钮
+                    voiceButton.setVisibility(View.VISIBLE);
+                    isVoice = false;
+                } else {
+                    // 显示软键盘
+                    inputMethodManager.showSoftInput(inputText, 0);
+                    // 点击后，图标切换为语音Icon
+                    mTypeImage.setImageResource(R.drawable.msg_voice_bg_selector);
+                    // 显示输入框
+                    inputText.setVisibility(View.VISIBLE);
+                    // 隐藏语音发送按钮
+                    voiceButton.setVisibility(View.GONE);
+                    isVoice = true;
+                }
+                break;
+            case R.id.btn_send:
+                String textMsg = inputText.getText().toString();
+                ChatItem mChat = new ChatItem();
+                mChat.setChatType(0);
+                mChat.setChatTime(getCurTime());
+                mChat.setInputContent(textMsg);
+                // 更新适配器
+                mAdatper.addItem(mChat);
+                // 清空文本输入内容
+                inputText.setText("");
+                // 将ListView定位在尾部
+                mListView.setSelection(mAdatper.getCount() - 1);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 获取当前聊天时间
+     *
+     * @return
+     */
+    private String getCurTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        String chatTime = sdf.format(new Date());
+        return chatTime;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mMediaManager.pauseVoice();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMediaManager.resumeVoice();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mMediaManager.releaseVoice();
+    }
+}

@@ -1,0 +1,10 @@
+package com.willian.weibo.constant;
+
+/**
+ * 常量定义类
+ */
+public class CommonConstant {
+
+    public static final boolean IS_SHOW_LOG = true;
+
+}

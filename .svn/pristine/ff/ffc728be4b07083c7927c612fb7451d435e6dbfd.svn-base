@@ -1,0 +1,120 @@
+package com.willian.weibo.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.willian.weibo.R;
+import com.willian.weibo.bean.ChatItem;
+import com.willian.weibo.bean.Recorder;
+import com.willian.weibo.utils.DisplayUtils;
+import com.willian.weibo.utils.ImageOptionHelper;
+
+import java.util.List;
+
+/**
+ * 聊天信息适配器
+ */
+public class ChatAdapter extends BaseAdapter {
+
+    private Context mContext;
+    private List<ChatItem> chatList;
+    private ImageLoader mImageLoader;
+    private LayoutInflater mInflater;
+    private String avatarUrl;
+
+    public ChatAdapter(Context mContext, List<ChatItem> mList) {
+        this.chatList = mList;
+        this.mContext = mContext;
+        this.mImageLoader = ImageLoader.getInstance();
+        this.mInflater = LayoutInflater.from(mContext);
+    }
+
+    public void setAvatarUrl(String url) {
+        this.avatarUrl = url;
+    }
+
+    @Override
+    public int getCount() {
+        return chatList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return chatList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder = null;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.listview_chat_item, null);
+            viewHolder = new ViewHolder();
+            viewHolder.chatTime = (TextView) convertView.findViewById(R.id.tv_chat_time);
+            viewHolder.avatarImage = (ImageView) convertView.findViewById(R.id.iv_avatar_icon);
+            viewHolder.chatMsg = (TextView) convertView.findViewById(R.id.tv_chat_msg);
+            viewHolder.voiceLayout = (RelativeLayout) convertView.findViewById(R.id.layout_chat_voice);
+            viewHolder.voiceTime = (TextView) convertView.findViewById(R.id.tv_voice_time);
+            // 第二次绘制ListView时，直接从getTag()中取出
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+        // 显示用户头像
+        mImageLoader.displayImage(avatarUrl, viewHolder.avatarImage, ImageOptionHelper.getAvatarOptions());
+
+        ChatItem mChat = (ChatItem) getItem(position);
+        int chatType = mChat.getChatType();
+        if (chatType == 0) {
+            viewHolder.voiceLayout.setVisibility(View.GONE);
+            viewHolder.chatMsg.setVisibility(View.VISIBLE);
+
+            viewHolder.chatMsg.setText(mChat.getInputContent());
+        } else if (chatType == 1) {
+            viewHolder.chatMsg.setVisibility(View.GONE);
+            viewHolder.voiceLayout.setVisibility(View.VISIBLE);
+            // 发送的语音
+            Recorder mRecorder = mChat.getRecorder();
+            float time = mRecorder.getTime();
+            viewHolder.voiceTime.setText(Math.round(time) + "\"");
+            // 最小宽度
+            int minItemWidth = (int) (DisplayUtils.getScreenWidthPixels(mContext) * 0.15f);
+            // 最大宽度
+            int maxItemWidth = (int) (DisplayUtils.getScreenWidthPixels(mContext) * 0.8f);
+            // 动态设置voiceLayout布局的宽度
+            ViewGroup.LayoutParams layoutParams = viewHolder.voiceLayout.getLayoutParams();
+            layoutParams.width = (int) (minItemWidth + (maxItemWidth / 60f * time));
+        }
+        viewHolder.chatTime.setText(mChat.getChatTime());
+        return convertView;
+    }
+
+    /**
+     * 添加新的Item，并更新适配器
+     *
+     * @param chat
+     */
+    public void addItem(ChatItem chat) {
+        chatList.add(chat);
+        notifyDataSetChanged();
+    }
+
+    public static class ViewHolder {
+        public TextView chatTime;
+        public ImageView avatarImage;
+        public RelativeLayout voiceLayout;
+        public TextView voiceTime;
+        public TextView chatMsg;
+    }
+}

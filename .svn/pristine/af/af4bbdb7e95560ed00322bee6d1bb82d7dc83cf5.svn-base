@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_title_bar"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_friends"
+            style="@style/lv_item_style" />
+
+        <LinearLayout
+            android:id="@+id/layout_float"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="@color/bg_gray"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp">
+
+            <TextView
+                android:id="@+id/tv_float"
+                style="@style/tv_body_style"
+                android:textColor="@color/text_gray" />
+        </LinearLayout>
+
+        <com.willian.weibo.widget.SideBarButton
+            android:id="@+id/sidebar"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/common_button_alpha"/>
+
+        <RelativeLayout
+            android:id="@+id/layout_toast"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/recording_background"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_toast_letter"
+                style="@style/tv_headline_style"
+                android:layout_centerInParent="true"
+                android:textSize="32sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

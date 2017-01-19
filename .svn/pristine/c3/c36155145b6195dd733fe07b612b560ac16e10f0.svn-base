@@ -1,0 +1,221 @@
+package com.willian.weibo.activity;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
+import android.view.ViewGroup.LayoutParams;
+
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.sina.weibo.sdk.exception.WeiboException;
+import com.sina.weibo.sdk.net.RequestListener;
+import com.sina.weibo.sdk.openapi.legacy.StatusesAPI;
+import com.sina.weibo.sdk.openapi.models.ErrorInfo;
+import com.sina.weibo.sdk.openapi.models.Status;
+import com.sina.weibo.sdk.openapi.models.StatusList;
+import com.sina.weibo.sdk.utils.LogUtil;
+import com.willian.weibo.R;
+import com.willian.weibo.adapter.PopupAdapter;
+import com.willian.weibo.adapter.StatusAdapter;
+import com.willian.weibo.sdk.AccessTokenKeeper;
+import com.willian.weibo.sdk.Constants;
+import com.willian.weibo.utils.TitleBarBuilder;
+import com.willian.weibo.utils.ToastUtil;
+import com.willian.weibo.widget.MyPopupWindow;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 当前用户的微博
+ */
+public class MyStatusActivity extends Activity {
+
+    private final static String TAG = "MyStatusActivity";
+
+    /**
+     * 用于获取微博信息流等操作的API
+     */
+    private StatusesAPI mStatusesAPI;
+    /**
+     * 当前页数
+     */
+    private int curPage = 1;
+
+    private View footerView;
+
+    private PullToRefreshListView mListView;
+
+    private List<Status> mStatusList = new ArrayList<Status>();
+
+    private StatusAdapter mStatusAdapter;
+
+    private LinearLayout mTitleLayout;
+
+    private PopupAdapter mPopupAdapter;
+
+    private List<String> mDataList = new ArrayList<String>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_my_status);
+
+        // 获取当前已保存过的 Token
+        Oauth2AccessToken mAccessToken = AccessTokenKeeper.readAccessToken(this);
+        // 对statusAPI实例化
+        mStatusesAPI = new StatusesAPI(this, Constants.APP_KEY, mAccessToken);
+
+        initTitleView();
+
+        initListView();
+
+        setData();
+
+        loadWeibo(1);
+    }
+
+    private void initTitleView() {
+
+        new TitleBarBuilder(this)
+                .setTitleText(getResources().getString(R.string.all_status))
+                .setArrowImage(R.mipmap.navigationbar_arrow_down)
+                .setLeftImage(R.drawable.titlebar_back_selector)
+                .setRightImage(R.drawable.userinfo_tabicon_more_selector)
+                .setLeftOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                        overridePendingTransition(R.anim.slide_out_from_right, R.anim.slide_in_from_left);
+                    }
+                })
+                .setRightOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ToastUtil.showToast(MyStatusActivity.this, "Right", Toast.LENGTH_SHORT);
+                    }
+                });
+
+        mTitleLayout = (LinearLayout) findViewById(R.id.layout_titile);
+
+        mPopupAdapter = new PopupAdapter(this, mDataList);
+
+        mTitleLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyPopupWindow mPopupWindow = new MyPopupWindow(MyStatusActivity.this, mPopupAdapter, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                mPopupWindow.showPopupWindow(mTitleLayout);
+            }
+        });
+    }
+
+    private void initListView() {
+        footerView = View.inflate(this, R.layout.listview_foot, null);
+        mListView = (PullToRefreshListView) findViewById(R.id.lv_status);
+        mStatusAdapter = new StatusAdapter(this, mStatusList);
+        mListView.setAdapter(mStatusAdapter);
+        // 下拉刷新
+        mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                loadWeibo(1);
+            }
+        });
+
+        mListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
+            @Override
+            public void onLastItemVisible() {
+                loadWeibo(curPage + 1);
+            }
+        });
+    }
+
+    /**
+     * 加载当前用户微博
+     *
+     * @param page
+     */
+    private void loadWeibo(final int page) {
+        mStatusesAPI.userTimeline(0L, 0L, 50, page, false, 0, false, new RequestListener() {
+
+            @Override
+            public void onComplete(String response) {
+                if (!TextUtils.isEmpty(response)) {
+                    LogUtil.i(TAG, response);
+                    // 调用 StatusList#parse 解析字符串成微博列表对象
+                    StatusList statuses = StatusList.parse(response);
+                    if (statuses != null && statuses.total_number > 0) {
+                        if (page == 1) {
+                            mStatusList.clear();
+                        }
+                        curPage = page;
+                        // 加载更多数据
+                        loadMoreData(statuses);
+                    } else {
+                        Toast.makeText(MyStatusActivity.this, response,
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onWeiboException(WeiboException e) {
+                LogUtil.e(TAG, e.getMessage());
+                ErrorInfo info = ErrorInfo.parse(e.getMessage());
+                Toast.makeText(MyStatusActivity.this, info.toString(),
+                        Toast.LENGTH_LONG).show();
+            }
+
+        });
+    }
+
+    /**
+     * 加载更多
+     *
+     * @param statuses
+     */
+    private void loadMoreData(StatusList statuses) {
+        for (Status mStatus : statuses.statusList) {
+            if (!mStatusList.contains(mStatus)) {
+                mStatusList.add(mStatus);
+            }
+        }
+        mStatusAdapter.notifyDataSetChanged();
+
+        if (mStatusList.size() < statuses.total_number) {
+            addFootView(mListView, footerView);
+        } else {
+            removeFootView(mListView, footerView);
+        }
+
+        mListView.onRefreshComplete();
+    }
+
+    private void addFootView(PullToRefreshListView pullListView, View footView) {
+        ListView listView = pullListView.getRefreshableView();
+        if (listView.getFooterViewsCount() == 1) {
+            listView.addFooterView(footView);
+        }
+    }
+
+    private void removeFootView(PullToRefreshListView pullListView, View footView) {
+        ListView listView = pullListView.getRefreshableView();
+        if (listView.getFooterViewsCount() > 1) {
+            listView.removeFooterView(footView);
+        }
+    }
+
+    // 设置PopopWindow显示的数据项
+    private void setData() {
+        mDataList.add(getResources().getString(R.string.all_status));
+        mDataList.add(getResources().getString(R.string.original_status));
+        mDataList.add(getResources().getString(R.string.picture_status));
+        mPopupAdapter.notifyDataSetChanged();
+    }
+}

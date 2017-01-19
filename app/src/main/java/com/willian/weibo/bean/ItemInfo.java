@@ -1,0 +1,87 @@
+package com.willian.weibo.bean;
+
+/**
+ * Item 实体类
+ */
+public class ItemInfo {
+    // 是否显示分隔区域
+    private boolean isShowDivider;
+    // Item 图标
+    private int itemImage;
+    // Item 名称
+    private String itemName;
+    // Item 说明
+    private String itemCaption;
+    // 是否显示箭头
+    private boolean isShowArrow;
+    // 是否选中
+    private boolean isSelected;
+
+    public ItemInfo(String itemName, boolean isSelected) {
+        this.itemName = itemName;
+        this.isSelected = isSelected;
+    }
+
+    public ItemInfo(int itemImage, String itemName, String itemCaption, boolean isShowArrow) {
+        this.itemImage = itemImage;
+        this.itemName = itemName;
+        this.itemCaption = itemCaption;
+        this.isShowArrow = isShowArrow;
+    }
+
+    public ItemInfo(boolean isShowDivider, int itemImage, String itemName, String itemCaption, boolean isShowArrow) {
+        this.isShowDivider = isShowDivider;
+        this.itemImage = itemImage;
+        this.itemName = itemName;
+        this.itemCaption = itemCaption;
+        this.isShowArrow = isShowArrow;
+    }
+
+    public boolean isShowDivider() {
+        return isShowDivider;
+    }
+
+    public void setShowDivider(boolean showDivider) {
+        isShowDivider = showDivider;
+    }
+
+    public int getItemImage() {
+        return itemImage;
+    }
+
+    public void setItemImage(int itemImage) {
+        this.itemImage = itemImage;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public String getItemCaption() {
+        return itemCaption;
+    }
+
+    public void setItemCaption(String itemCaption) {
+        this.itemCaption = itemCaption;
+    }
+
+    public boolean isShowArrow() {
+        return isShowArrow;
+    }
+
+    public void setShowArrow(boolean showArrow) {
+        isShowArrow = showArrow;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+}
